@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Наиль Бадиуллин](https://up.htmlacademy.ru/react/4/user/1115009).
-* Наставник: `Неизвестно`.
+* Наставник: [Даниил Царев](https://htmlacademy.ru/profile/id945835).
 
 ---
 
