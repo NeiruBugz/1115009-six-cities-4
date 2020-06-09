@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-const Main = ({rentOffers = 312}) => {
+const Main = ({rentOffers}) => {
   return <Fragment>
     <div style={{display: `none`}}>
       <svg xmlns="http://www.w3.org/2000/svg">
