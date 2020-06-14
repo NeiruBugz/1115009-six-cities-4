@@ -16,7 +16,7 @@ const cardNames = [
 describe(`Main renders correctly`, () => {
   it(`should render Main component with props`, function () {
     const main = renderer.create(
-        <Main rentOffers={rentOffers} cardNames={cardNames} />
+        <Main rentOffers={rentOffers} cardNames={cardNames} onCardClick={() => {}}/>
     ).toJSON();
 
     expect(main).toMatchSnapshot();

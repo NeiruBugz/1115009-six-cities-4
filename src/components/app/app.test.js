@@ -12,6 +12,7 @@ const mockSettings = {
     `Nice, cozy, warm big bed apartment`,
     `Wood and stone place`,
   ],
+  onCardClick: () => {},
 };
 
 describe(`App renders correctly`, () => {

@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-const Main = ({rentOffers, cardNames}) => {
+const Main = ({rentOffers, cardNames, onCardClick}) => {
   return <Fragment>
     <div style={{display: `none`}}>
       <svg xmlns="http://www.w3.org/2000/svg">
@@ -139,7 +139,7 @@ const Main = ({rentOffers, cardNames}) => {
                               <span className="visually-hidden">Rating</span>
                             </div>
                           </div>
-                          <h2 className="place-card__name">
+                          <h2 className="place-card__name" onClick={onCardClick}>
                             <a href="#">{cardName}</a>
                           </h2>
                           <p className="place-card__type">Apartment</p>
@@ -163,6 +163,7 @@ const Main = ({rentOffers, cardNames}) => {
 Main.propTypes = {
   rentOffers: PropTypes.number.isRequired,
   cardNames: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onCardClick: PropTypes.func.isRequired,
 };
 
 export default Main;

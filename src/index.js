@@ -12,6 +12,7 @@ const baseSettings = {
     `Nice, cozy, warm big bed apartment`,
     `Wood and stone place`,
   ],
+  onCardClick: () => {},
 };
 
 ReactDOM.render(
