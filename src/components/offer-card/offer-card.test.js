@@ -6,11 +6,14 @@ import OfferCard from './offer-card.jsx';
 import {offers} from '../../mocks/offers';
 
 describe(`OfferCard renders correctly`, () => {
-  it(`should match with snapshot`, () => {
-    const handleCardClick = jest.fn();
+  it(`should render OfferCard with passed props`, () => {
     const [first] = offers;
     const offerCard = renderer.create(
-        <OfferCard offer={first} handleCardClick={handleCardClick} />
+        <OfferCard
+          offer={first}
+          handleMouseOver={jest.fn()}
+          handleMouseLeave={jest.fn()}
+        />
     ).toJSON();
 
     expect(offerCard).toMatchSnapshot();

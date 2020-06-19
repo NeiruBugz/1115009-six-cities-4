@@ -11,7 +11,7 @@ const mockSettings = {
 };
 
 describe(`App renders correctly`, () => {
-  it(`should render App component with props`, () => {
+  it(`should render App component with passed props`, () => {
     const tree = renderer.create(
         <App settings={mockSettings} />
     ).toJSON();
