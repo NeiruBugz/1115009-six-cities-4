@@ -1,4 +1,4 @@
-const offers = [
+export const offers = [
   {
     id: 0,
     mark: `Premium`,
@@ -60,7 +60,3 @@ const offers = [
     title: `Wood and stone place`,
   }
 ];
-
-export default {
-  offers,
-};
