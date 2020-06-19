@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const OfferCard = ({offer, handleCardClick}) => {
+const OfferCard = ({offer, handleMouseOver, handleMouseLeave}) => {
   const {mark, type, title, price, priceText, image, rating} = offer;
   return (
-    <article className="cities__place-card place-card">
+    <article
+      className="cities__place-card place-card"
+      onMouseEnter={() => handleMouseOver(offer)}
+      onMouseLeave={handleMouseLeave}
+    >
       <div className="place-card__mark">
         <span>{mark}</span>
       </div>
@@ -38,7 +42,7 @@ const OfferCard = ({offer, handleCardClick}) => {
             <span className="visually-hidden">Rating</span>
           </div>
         </div>
-        <h2 className="place-card__name" onClick={handleCardClick}>
+        <h2 className="place-card__name">
           <a href="#">{title}</a>
         </h2>
         <p className="place-card__type">{type}</p>
@@ -57,7 +61,8 @@ OfferCard.propTypes = {
     title: PropTypes.string,
     type: PropTypes.string,
   }).isRequired,
-  handleCardClick: PropTypes.func.isRequired,
+  handleMouseOver: PropTypes.func.isRequired,
+  handleMouseLeave: PropTypes.func.isRequired,
 };
 
 export default OfferCard;

@@ -3,6 +3,7 @@
 exports[`OfferCard renders correctly should match with snapshot 1`] = `
 <article
   className="cities__place-card place-card"
+  onMouseEnter={[Function]}
 >
   <div
     className="place-card__mark"
@@ -90,7 +91,6 @@ exports[`OfferCard renders correctly should match with snapshot 1`] = `
     </div>
     <h2
       className="place-card__name"
-      onClick={[MockFunction]}
     >
       <a
         href="#"

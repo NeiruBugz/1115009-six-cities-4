@@ -6,11 +6,19 @@ import OfferCard from '../offer-card/offer-card.jsx';
 class OffersList extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {};
-    this.handleCardClick = this.handleCardClick.bind(this);
+    this.state = {
+      activeCard: {},
+    };
+    this.handleOnCardMouseEnter = this._handleOnCardMouseEnter.bind(this);
+    this.handleOnCardMouseLeave = this._handleOnCardMouseLeave.bind(this);
   }
 
-  handleCardClick() {
+  _handleOnCardMouseEnter(card) {
+    this.setState({activeCard: card});
+  }
+
+  _handleOnCardMouseLeave() {
+    this.setState({activeCard: {}});
   }
 
   render() {
@@ -21,7 +29,8 @@ class OffersList extends PureComponent {
           return (
             <OfferCard
               offer={offer}
-              handleCardClick={this.handleCardClick}
+              handleMouseOver={this.handleOnCardMouseEnter}
+              handleMouseLeave={this.handleOnCardMouseLeave}
               key={offer.id}
             />
           );

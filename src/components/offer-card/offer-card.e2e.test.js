@@ -12,12 +12,22 @@ Enzyme.configure({
 
 describe(`OfferCard e2e test`, () => {
   it(`should pass offer data to event handler`, () => {
-    const handleCardClick = jest.fn();
+    const onMouseEnter = jest.fn((result) => result);
 
     const [first] = offers;
 
     const offerCard = shallow(
-        <OfferCard offer={first} handleCardClick={handleCardClick} />
+        <OfferCard
+          offer={first}
+          handleMouseLeave={jest.fn()}
+          handleMouseOver={onMouseEnter}
+        />
     );
+
+    const cardActiveElement = offerCard.find(`.place-card`);
+
+    cardActiveElement.simulate(`mouseenter`, {});
+
+    expect(onMouseEnter.mock.calls[0][0]).toMatchObject(first);
   });
 });
