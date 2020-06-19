@@ -1,12 +1,37 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import Main from '../main/main.jsx';
+import DetailedOffer from '../detailed-offer/detailed-offer.jsx';
 
-const App = ({settings}) => {
-  const {rentOffers, rentOffersCount} = settings;
-  return <Main rentOffers={rentOffers} rentOffersCount={rentOffersCount} />;
-};
+class App extends PureComponent {
+  constructor(props) {
+    super(props);
+  }
+
+  _renderApp() {
+    const {rentOffers, rentOffersCount} = this.props.settings;
+    return (
+      <Main rentOffers={rentOffers} rentOffersCount={rentOffersCount} />
+    );
+  }
+
+  render() {
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            {this._renderApp()}
+          </Route>
+          <Route exact path="/dev-offer">
+            <DetailedOffer />
+          </Route>
+        </Switch>
+      </BrowserRouter>
+    );
+  }
+}
 
 App.propTypes = {
   settings: PropTypes.shape({
