@@ -7,6 +7,7 @@ const offers = [
     priceText: `night`,
     rating: 80,
     type: `Apartment`,
+    title: `Wood and stone place`,
   },
   {
     id: 1,
@@ -16,6 +17,7 @@ const offers = [
     priceText: `night`,
     rating: 80,
     type: `Apartment`,
+    title: `Wood and stone place`,
   },
   {
     id: 3,
@@ -25,6 +27,7 @@ const offers = [
     priceText: `night`,
     rating: 80,
     type: `Apartment`,
+    title: `Wood and stone place`,
   },
   {
     id: 4,
@@ -34,6 +37,7 @@ const offers = [
     priceText: `night`,
     rating: 80,
     type: `Apartment`,
+    title: `Wood and stone place`,
   },
   {
     id: 5,
@@ -43,6 +47,7 @@ const offers = [
     priceText: `night`,
     rating: 80,
     type: `Apartment`,
+    title: `Wood and stone place`,
   },
   {
     id: 6,
@@ -52,6 +57,7 @@ const offers = [
     priceText: `night`,
     rating: 80,
     type: `Apartment`,
+    title: `Wood and stone place`,
   }
 ];
 
