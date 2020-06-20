@@ -3,16 +3,11 @@ import ReactDOM from 'react-dom';
 
 import App from './components/app/app.jsx';
 
+import {offers} from './mocks/offers';
+
 const baseSettings = {
-  rentOffers: 500,
-  cardNames: [
-    `Beautiful & luxurious apartment at great location`,
-    `Wood and stone place`,
-    `Canal View Prisengracht`,
-    `Nice, cozy, warm big bed apartment`,
-    `Wood and stone place`,
-  ],
-  onCardClick: () => {},
+  rentOffers: offers,
+  rentOffersCount: offers.length,
 };
 
 ReactDOM.render(

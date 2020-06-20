@@ -3,20 +3,13 @@ import renderer from 'react-test-renderer';
 
 import Main from './main.jsx';
 
-const rentOffers = 500;
-
-const cardNames = [
-  `Beautiful & luxurious apartment at great location`,
-  `Wood and stone place`,
-  `Canal View Prisengracht`,
-  `Nice, cozy, warm big bed apartment`,
-  `Wood and stone place`,
-];
+import {offers} from '../../mocks/offers';
 
 describe(`Main renders correctly`, () => {
-  it(`should render Main component with props`, function () {
+  it(`should render Main component with passed props`, () => {
+    const offersCount = offers.length;
     const main = renderer.create(
-        <Main rentOffers={rentOffers} cardNames={cardNames} onCardClick={() => {}}/>
+        <Main rentOffers={offers} rentOffersCount={offersCount}/>
     ).toJSON();
 
     expect(main).toMatchSnapshot();
