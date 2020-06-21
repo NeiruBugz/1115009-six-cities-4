@@ -1,17 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const OfferCard = ({offer, handleMouseOver, handleMouseLeave}) => {
+const OfferCard = ({offer, handleMouseOver, handleMouseLeave, onTitleClick, index}) => {
   const {mark, type, title, price, priceText, image, rating} = offer;
+
+  const handleTitleClick = (idx, evt) => {
+    evt.preventDefault();
+    onTitleClick(idx);
+  };
+
   return (
     <article
       className="cities__place-card place-card"
       onMouseEnter={() => handleMouseOver(offer)}
       onMouseLeave={handleMouseLeave}
     >
-      <div className="place-card__mark">
-        <span>{mark}</span>
-      </div>
+      {mark &&
+        <div className="place-card__mark">
+          <span>{mark}</span>
+        </div>
+      }
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
           <img
@@ -43,7 +51,7 @@ const OfferCard = ({offer, handleMouseOver, handleMouseLeave}) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <a href="#" onClick={(evt) => handleTitleClick(index, evt)}>{title}</a>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -63,6 +71,8 @@ OfferCard.propTypes = {
   }).isRequired,
   handleMouseOver: PropTypes.func.isRequired,
   handleMouseLeave: PropTypes.func.isRequired,
+  index: PropTypes.number.isRequired,
+  onTitleClick: PropTypes.func.isRequired,
 };
 
 export default OfferCard;

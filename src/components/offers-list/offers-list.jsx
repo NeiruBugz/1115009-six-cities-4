@@ -22,15 +22,17 @@ class OffersList extends PureComponent {
   }
 
   render() {
-    const {offers} = this.props;
+    const {offers, onTitleClick} = this.props;
     return (
       <div className="cities__places-list places__list tabs__content">
-        {offers.map((offer) => {
+        {offers.map((offer, idx) => {
           return (
             <OfferCard
               offer={offer}
               handleMouseOver={this.handleOnCardMouseEnter}
               handleMouseLeave={this.handleOnCardMouseLeave}
+              onTitleClick={onTitleClick}
+              index={idx}
               key={offer.id}
             />
           );
@@ -52,6 +54,7 @@ OffersList.propTypes = {
         type: PropTypes.string,
       })
   ).isRequired,
+  onTitleClick: PropTypes.func.isRequired,
 };
 
 export default OffersList;

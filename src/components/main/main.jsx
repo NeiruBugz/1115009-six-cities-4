@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import OffersList from '../offers-list/offers-list.jsx';
 
-const Main = ({rentOffers, rentOffersCount}) => {
+const Main = ({rentOffers, rentOffersCount, onTitleClick}) => {
   return <Fragment>
     <div style={{display: `none`}}>
       <svg xmlns="http://www.w3.org/2000/svg">
@@ -103,7 +103,7 @@ const Main = ({rentOffers, rentOffersCount}) => {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul>
               </form>
-              <OffersList offers={rentOffers} />
+              <OffersList offers={rentOffers} onTitleClick={onTitleClick} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>
@@ -128,6 +128,7 @@ Main.propTypes = {
       })
   ).isRequired,
   rentOffersCount: PropTypes.number.isRequired,
+  onTitleClick: PropTypes.func.isRequired,
 };
 
 export default Main;
