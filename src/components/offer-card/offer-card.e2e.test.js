@@ -21,6 +21,8 @@ describe(`OfferCard e2e test`, () => {
           offer={first}
           handleMouseLeave={jest.fn()}
           handleMouseOver={onMouseEnter}
+          index={1}
+          onTitleClick={jest.fn()}
         />
     );
 
