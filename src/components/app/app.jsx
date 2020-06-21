@@ -22,12 +22,12 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {rentOffers, rentOffersCount} = this.props.settings;
+    const {rentOffers} = this.props.settings;
     const {activeOffer} = this.state;
 
     if (activeOffer === -1) {
       return (
-        <Main rentOffers={rentOffers} rentOffersCount={rentOffersCount} onTitleClick={(idx) => this.handleTitleClick(idx)} />
+        <Main rentOffers={rentOffers} onTitleClick={(idx) => this.handleTitleClick(idx)} />
       );
     }
 
@@ -67,7 +67,6 @@ App.propTypes = {
           type: PropTypes.string,
         })
     ),
-    rentOffersCount: PropTypes.number.isRequired,
   }).isRequired,
 };
 
