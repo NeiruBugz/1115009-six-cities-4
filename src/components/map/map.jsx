@@ -38,14 +38,14 @@ class Map extends PureComponent {
   }
 
   render() {
-    return <div ref={this.mapRef} style={{height: `100%`}}/>;
+    return <div ref={this.mapRef} style={{height: `100%`}} />;
   }
 }
 
 Map.propTypes = {
   city: PropTypes.arrayOf(PropTypes.number).isRequired,
   zoom: PropTypes.number.isRequired,
-  coordinates: PropTypes.arrayOf(PropTypes.number).isRequired,
+  coordinates: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
 };
 
 export default Map;
