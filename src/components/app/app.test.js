@@ -7,7 +7,6 @@ import {offers} from '../../mocks/offers';
 
 const mockSettings = {
   rentOffers: offers,
-  rentOffersCount: offers.length,
 };
 
 describe(`App renders correctly`, () => {

@@ -13,6 +13,8 @@ describe(`OfferCard renders correctly`, () => {
           offer={first}
           handleMouseOver={jest.fn()}
           handleMouseLeave={jest.fn()}
+          index={1}
+          onTitleClick={jest.fn()}
         />
     ).toJSON();
 

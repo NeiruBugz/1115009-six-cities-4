@@ -8,7 +8,7 @@ import {offers} from '../../mocks/offers';
 describe(`OffersList renders correctly`, () => {
   it(`should render OffersList with passed props`, () => {
     const offersList = renderer.create(
-        <OffersList offers={offers} />
+        <OffersList offers={offers} onTitleClick={jest.fn()} />
     ).toJSON();
 
     expect(offersList).toMatchSnapshot();

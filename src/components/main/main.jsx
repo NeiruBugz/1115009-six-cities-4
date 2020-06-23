@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import OffersList from '../offers-list/offers-list.jsx';
 
-const Main = ({rentOffers, rentOffersCount}) => {
+const Main = ({rentOffers, onTitleClick}) => {
   return <Fragment>
     <div style={{display: `none`}}>
       <svg xmlns="http://www.w3.org/2000/svg">
@@ -87,7 +87,7 @@ const Main = ({rentOffers, rentOffersCount}) => {
           <div className="cities__places-container container">
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{rentOffersCount} places to stay in Amsterdam</b>
+              <b className="places__found">{rentOffers.length} places to stay in Amsterdam</b>
               <form className="places__sorting" action="#" method="get">
                 <span className="places__sorting-caption">Sort by</span>
                 <span className="places__sorting-type" tabIndex="0">
@@ -103,7 +103,7 @@ const Main = ({rentOffers, rentOffersCount}) => {
                   <li className="places__option" tabIndex="0">Top rated first</li>
                 </ul>
               </form>
-              <OffersList offers={rentOffers} />
+              <OffersList offers={rentOffers} onTitleClick={onTitleClick} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map"></section>
@@ -127,7 +127,7 @@ Main.propTypes = {
         type: PropTypes.string,
       })
   ).isRequired,
-  rentOffersCount: PropTypes.number.isRequired,
+  onTitleClick: PropTypes.func.isRequired,
 };
 
 export default Main;
