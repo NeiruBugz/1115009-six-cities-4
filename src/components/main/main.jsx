@@ -2,8 +2,11 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
 import OffersList from '../offers-list/offers-list.jsx';
+import Map from '../map/map.jsx';
 
 const Main = ({rentOffers, onTitleClick}) => {
+  const offersCoordinates = rentOffers.map((offer) => offer.coordinates);
+
   return <Fragment>
     <div style={{display: `none`}}>
       <svg xmlns="http://www.w3.org/2000/svg">
@@ -106,7 +109,13 @@ const Main = ({rentOffers, onTitleClick}) => {
               <OffersList offers={rentOffers} onTitleClick={onTitleClick} />
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <section className="cities__map map">
+                <Map
+                  city={[52.38333, 4.9]}
+                  zoom={12}
+                  coordinates={offersCoordinates}
+                />
+              </section>
             </div>
           </div>
         </div>
