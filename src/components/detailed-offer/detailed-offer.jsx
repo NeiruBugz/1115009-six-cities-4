@@ -4,7 +4,13 @@ import PropTypes from 'prop-types';
 import ReviewsList from '../reviews-list/reviews-list.jsx';
 import Map from '../map/map.jsx';
 
+import {reviews} from '../../mocks/reviews';
+
 const DetailedOffer = ({offer}) => {
+
+  const generateRandomInteger = (min, max) => {
+    return Math.floor(min + Math.random() * (max + 1 - min));
+  };
 
   const {
     title,
@@ -143,7 +149,7 @@ const DetailedOffer = ({offer}) => {
                   </div>
                 </div>
                 <section className="property__reviews reviews">
-                  <ReviewsList reviews={[]}/>
+                  <ReviewsList reviews={reviews.splice(generateRandomInteger(0, 2), generateRandomInteger(0, 2))}/>
                   <form className="reviews__form form" action="#" method="post">
                     <label className="reviews__label form__label" htmlFor="review">Your review</label>
                     <div className="reviews__rating-form form__rating">
