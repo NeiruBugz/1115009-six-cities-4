@@ -2,6 +2,7 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
 import ReviewsList from '../reviews-list/reviews-list.jsx';
+import Map from '../map/map.jsx';
 
 const DetailedOffer = ({offer}) => {
 
@@ -201,7 +202,18 @@ const DetailedOffer = ({offer}) => {
                 </section>
               </div>
             </div>
-            <section className="property__map map"></section>
+            <section className="property__map map">
+              <Map
+                city={[52.38333, 4.9]}
+                coordinates={[
+                  [52.3909553943508, 4.85309666406198],
+                  [52.369553943508, 4.85309666406198],
+                  [52.3909553943508, 4.929309666406198],
+                  [52.3809553943508, 4.939309666406198]
+                ].filter((coord) => JSON.stringify(coord) !== JSON.stringify(offer.coordinates))}
+                zoom={12}
+              />
+            </section>
           </section>
           <div className="container">
             <section className="near-places places">
@@ -333,6 +345,7 @@ DetailedOffer.propTypes = {
     hostAvatar: PropTypes.string,
     super: PropTypes.bool,
     offerDescription: PropTypes.arrayOf(PropTypes.string),
+    coordinates: PropTypes.arrayOf(PropTypes.number),
   }).isRequired,
 };
 
