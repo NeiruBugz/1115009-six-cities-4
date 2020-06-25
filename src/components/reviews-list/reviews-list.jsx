@@ -1,16 +1,29 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 
-import Review from '../review/review/jsx';
+import Review from '../review/review.jsx';
 
 const ReviewsList = ({reviews}) => {
   return (
-    <section className="property__reviews reviews">
-      <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">1</span></h2>
+    <Fragment>
+      <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
       <ul className="reviews__list">
-        {reviews.length ? reviews.map(({review}) => <Review key={review.id}/>) : null}
+        {reviews.length > 0
+          ? reviews.map(({id, userAvatar, userName, rating, text, date}) => {
+            return (
+              <Review
+                key={id}
+                userAvatar={userAvatar}
+                userName={userName}
+                rating={rating}
+                text={text}
+                date={date}
+              />
+            );
+          })
+          : null}
       </ul>
-    </section>
+    </Fragment>
   );
 };
 
@@ -24,3 +37,4 @@ ReviewsList.propTypes = {
   })).isRequired,
 };
 
+export default ReviewsList;
