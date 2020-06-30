@@ -1,5 +1,4 @@
 import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
 
 import ReviewsList from '../reviews-list/reviews-list.jsx';
 import Map from '../map/map.jsx';

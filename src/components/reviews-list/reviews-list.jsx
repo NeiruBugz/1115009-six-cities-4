@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
 
 import Review from '../review/review.jsx';
+import {reviewList} from '../../prop-types/review.types';
 
 const ReviewsList = ({reviews}) => {
   return (
@@ -28,13 +28,7 @@ const ReviewsList = ({reviews}) => {
 };
 
 ReviewsList.propTypes = {
-  reviews: PropTypes.arrayOf(PropTypes.shape({
-    userAvatar: PropTypes.string,
-    userName: PropTypes.string,
-    rating: PropTypes.number,
-    text: PropTypes.string,
-    date: PropTypes.string,
-  })).isRequired,
+  reviews: reviewList.isRequired,
 };
 
 export default ReviewsList;

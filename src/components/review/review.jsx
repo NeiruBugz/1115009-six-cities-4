@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import {reviewShape} from '../../prop-types/review.types';
 
 const Review = ({userAvatar, userName, rating, text, date}) => {
   return (
@@ -26,13 +26,7 @@ const Review = ({userAvatar, userName, rating, text, date}) => {
   );
 };
 
-Review.propTypes = {
-  userAvatar: PropTypes.string.isRequired,
-  userName: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-  text: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-};
+Review.propTypes = reviewShape.isRequired;
 
 export default Review;
 
