@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import {offerShape} from '../../prop-types/offer.types';
+
 const OfferCard = ({offer, handleMouseOver, handleMouseLeave, onTitleClick, index}) => {
   const {mark, type, title, price, priceText, image, rating} = offer;
 
@@ -60,15 +62,7 @@ const OfferCard = ({offer, handleMouseOver, handleMouseLeave, onTitleClick, inde
 };
 
 OfferCard.propTypes = {
-  offer: PropTypes.shape({
-    mark: PropTypes.string,
-    image: PropTypes.string,
-    price: PropTypes.number,
-    priceText: PropTypes.string,
-    rating: PropTypes.number,
-    title: PropTypes.string,
-    type: PropTypes.string,
-  }).isRequired,
+  offer: offerShape.isRequired,
   handleMouseOver: PropTypes.func.isRequired,
   handleMouseLeave: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,

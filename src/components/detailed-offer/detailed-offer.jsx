@@ -5,6 +5,7 @@ import ReviewsList from '../reviews-list/reviews-list.jsx';
 import Map from '../map/map.jsx';
 
 import {reviews} from '../../mocks/reviews';
+import {offerShape} from '../../prop-types/offer.types';
 
 const DetailedOffer = ({offer}) => {
 
@@ -334,25 +335,7 @@ const DetailedOffer = ({offer}) => {
 };
 
 DetailedOffer.propTypes = {
-  offer: PropTypes.shape({
-    mark: PropTypes.string,
-    image: PropTypes.string,
-    offerImages: PropTypes.arrayOf(PropTypes.string),
-    price: PropTypes.number,
-    priceText: PropTypes.string,
-    rating: PropTypes.number,
-    ratingValue: PropTypes.string,
-    title: PropTypes.string,
-    type: PropTypes.string,
-    bedroomsCount: PropTypes.number,
-    adultsCount: PropTypes.number,
-    features: PropTypes.arrayOf(PropTypes.string),
-    hostName: PropTypes.string,
-    hostAvatar: PropTypes.string,
-    super: PropTypes.bool,
-    offerDescription: PropTypes.arrayOf(PropTypes.string),
-    coordinates: PropTypes.arrayOf(PropTypes.number),
-  }).isRequired,
+  offer: offerShape.isRequired,
 };
 
 export default DetailedOffer;

@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import OffersList from '../offers-list/offers-list.jsx';
 import Map from '../map/map.jsx';
 
+import {offerList} from '../../prop-types/offer.types';
+
 const Main = ({rentOffers, onTitleClick}) => {
   const offersCoordinates = rentOffers.map((offer) => offer.coordinates);
 
@@ -125,17 +127,7 @@ const Main = ({rentOffers, onTitleClick}) => {
 };
 
 Main.propTypes = {
-  rentOffers: PropTypes.arrayOf(
-      PropTypes.shape({
-        mark: PropTypes.string,
-        image: PropTypes.string,
-        price: PropTypes.number,
-        priceText: PropTypes.string,
-        rating: PropTypes.number,
-        title: PropTypes.string,
-        type: PropTypes.string,
-      })
-  ).isRequired,
+  rentOffers: offerList.isRequired,
   onTitleClick: PropTypes.func.isRequired,
 };
 

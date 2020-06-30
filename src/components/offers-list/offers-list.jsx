@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import OfferCard from '../offer-card/offer-card.jsx';
 
+import {offerList} from '../../prop-types/offer.types';
+
 class OffersList extends PureComponent {
   constructor(props) {
     super(props);
@@ -43,17 +45,7 @@ class OffersList extends PureComponent {
 }
 
 OffersList.propTypes = {
-  offers: PropTypes.arrayOf(
-      PropTypes.shape({
-        mark: PropTypes.string,
-        image: PropTypes.string,
-        price: PropTypes.number,
-        priceText: PropTypes.string,
-        rating: PropTypes.number,
-        title: PropTypes.string,
-        type: PropTypes.string,
-      })
-  ).isRequired,
+  offers: offerList.isRequired,
   onTitleClick: PropTypes.func.isRequired,
 };
 
