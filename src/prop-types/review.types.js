@@ -6,6 +6,6 @@ export const reviewShape = PropTypes.shape({
   rating: PropTypes.number.isRequired,
   text: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-});
+}).isRequired;
 
 export const reviewList = PropTypes.arrayOf(reviewShape);

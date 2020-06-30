@@ -24,7 +24,7 @@ class OffersList extends PureComponent {
   }
 
   render() {
-    const {offers, onTitleClick} = this.props;
+    const {offers, onTitleClick, isNearPlaces} = this.props;
     return (
       <div className="cities__places-list places__list tabs__content">
         {offers.map((offer, idx) => {
@@ -36,6 +36,7 @@ class OffersList extends PureComponent {
               onTitleClick={onTitleClick}
               index={idx}
               key={offer.id}
+              isNearPlace={isNearPlaces}
             />
           );
         })}
@@ -44,9 +45,14 @@ class OffersList extends PureComponent {
   }
 }
 
+OffersList.defaultProps = {
+  isNearPlaces: false,
+};
+
 OffersList.propTypes = {
   offers: offerList.isRequired,
   onTitleClick: PropTypes.func.isRequired,
+  isNearPlaces: PropTypes.bool,
 };
 
 export default OffersList;
