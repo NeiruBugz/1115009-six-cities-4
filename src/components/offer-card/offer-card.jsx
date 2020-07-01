@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const OfferCard = ({offer, handleMouseOver, handleMouseLeave, onTitleClick, index}) => {
+import {offerShape} from '../../prop-types/offer.types';
+
+const OfferCard = ({offer, handleMouseOver, handleMouseLeave, onTitleClick, index, isNearPlace}) => {
   const {mark, type, title, price, priceText, image, rating} = offer;
 
   const handleTitleClick = (idx, evt) => {
@@ -11,7 +13,7 @@ const OfferCard = ({offer, handleMouseOver, handleMouseLeave, onTitleClick, inde
 
   return (
     <article
-      className="cities__place-card place-card"
+      className={isNearPlace ? `near-places__card place-card` : `cities__place-card place-card`}
       onMouseEnter={() => handleMouseOver(offer)}
       onMouseLeave={handleMouseLeave}
     >
@@ -59,20 +61,17 @@ const OfferCard = ({offer, handleMouseOver, handleMouseLeave, onTitleClick, inde
   );
 };
 
+OfferCard.defaultProps = {
+  isNearPlace: false,
+};
+
 OfferCard.propTypes = {
-  offer: PropTypes.shape({
-    mark: PropTypes.string,
-    image: PropTypes.string,
-    price: PropTypes.number,
-    priceText: PropTypes.string,
-    rating: PropTypes.number,
-    title: PropTypes.string,
-    type: PropTypes.string,
-  }).isRequired,
+  offer: offerShape.isRequired,
   handleMouseOver: PropTypes.func.isRequired,
   handleMouseLeave: PropTypes.func.isRequired,
   index: PropTypes.number.isRequired,
   onTitleClick: PropTypes.func.isRequired,
+  isNearPlace: PropTypes.bool,
 };
 
 export default OfferCard;

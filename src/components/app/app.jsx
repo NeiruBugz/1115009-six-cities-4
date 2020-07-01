@@ -6,6 +6,7 @@ import Main from '../main/main.jsx';
 import DetailedOffer from '../detailed-offer/detailed-offer.jsx';
 
 import {offers} from '../../mocks/offers';
+import {offerList} from '../../prop-types/offer.types';
 
 class App extends PureComponent {
   constructor(props) {
@@ -56,17 +57,7 @@ class App extends PureComponent {
 
 App.propTypes = {
   settings: PropTypes.shape({
-    rentOffers: PropTypes.arrayOf(
-        PropTypes.shape({
-          mark: PropTypes.string,
-          image: PropTypes.string,
-          price: PropTypes.number,
-          priceText: PropTypes.string,
-          rating: PropTypes.number,
-          title: PropTypes.string,
-          type: PropTypes.string,
-        })
-    ),
+    rentOffers: offerList.isRequired,
   }).isRequired,
 };
 
