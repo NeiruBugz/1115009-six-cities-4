@@ -118,36 +118,10 @@ Array [
               className="locations__item"
             >
               <a
-                className="locations__item-link tabs__item"
-                href="#"
+                className="locations__item-link tabs__item tabs__item--active"
+                onClick={[Function]}
               >
-                <span>
-                  Paris
-                </span>
-              </a>
-            </li>
-            <li
-              className="locations__item"
-            >
-              <a
-                className="locations__item-link tabs__item"
-                href="#"
-              >
-                <span>
-                  Cologne
-                </span>
-              </a>
-            </li>
-            <li
-              className="locations__item"
-            >
-              <a
-                className="locations__item-link tabs__item"
-                href="#"
-              >
-                <span>
-                  Brussels
-                </span>
+                <span />
               </a>
             </li>
             <li
@@ -155,34 +129,49 @@ Array [
             >
               <a
                 className="locations__item-link tabs__item tabs__item--active"
+                onClick={[Function]}
               >
-                <span>
-                  Amsterdam
-                </span>
+                <span />
               </a>
             </li>
             <li
               className="locations__item"
             >
               <a
-                className="locations__item-link tabs__item"
-                href="#"
+                className="locations__item-link tabs__item tabs__item--active"
+                onClick={[Function]}
               >
-                <span>
-                  Hamburg
-                </span>
+                <span />
               </a>
             </li>
             <li
               className="locations__item"
             >
               <a
-                className="locations__item-link tabs__item"
-                href="#"
+                className="locations__item-link tabs__item tabs__item--active"
+                onClick={[Function]}
               >
-                <span>
-                  Dusseldorf
-                </span>
+                <span />
+              </a>
+            </li>
+            <li
+              className="locations__item"
+            >
+              <a
+                className="locations__item-link tabs__item tabs__item--active"
+                onClick={[Function]}
+              >
+                <span />
+              </a>
+            </li>
+            <li
+              className="locations__item"
+            >
+              <a
+                className="locations__item-link tabs__item tabs__item--active"
+                onClick={[Function]}
+              >
+                <span />
               </a>
             </li>
           </ul>
@@ -206,7 +195,7 @@ Array [
               className="places__found"
             >
               6
-               places to stay in Amsterdam
+               places to stay in 
             </b>
             <form
               action="#"
