@@ -1,14 +1,15 @@
 import {offers as mockOffers} from '../mocks/offers';
 
 const initialState = {
-  city: `Amsterdam`,
-  cities: [
-    {coordinates: [], name: `Paris`},
-    {coordinates: [], name: `Cologne`},
-    {coordinates: [], name: `Brussels`},
+  city:
     {coordinates: [52.38333, 4.9], name: `Amsterdam`},
-    {coordinates: [], name: `Hamburg`},
-    {coordinates: [], name: `Dusseldorf`},
+  cities: [
+    {coordinates: [48.864716, 2.349014], name: `Paris`},
+    {coordinates: [50.935173, 6.953101], name: `Cologne`},
+    {coordinates: [50.8505, 4.3488], name: `Brussels`},
+    {coordinates: [52.38333, 4.9], name: `Amsterdam`},
+    {coordinates: [53.551086, 9.993682], name: `Hamburg`},
+    {coordinates: [51.2217, 6.7762], name: `Dusseldorf`},
   ],
   offers: mockOffers.filter((offer) => offer.city === `Amsterdam`),
 };

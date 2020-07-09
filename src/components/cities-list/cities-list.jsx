@@ -2,13 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import {setCity, setOffers} from 'store/reducer';
-import {offerShape} from 'types/offer.types';
+import {setCity, setOffers} from '../../store/reducer';
+import {offerShape} from '../../prop-types/offer.types';
 
 const CitiesList = ({selectedCity, cities, onCityChange, offers, onOffersChange}) => {
 
   const handleCityClick = (city) => {
-    onCityChange(city);
+    const cityCoordinates = cities.filter((cityObject) => cityObject.name === city)[0].coordinates;
+    onCityChange({coordinates: cityCoordinates, name: city});
     onOffersChange(offers.filter((offer) => offer.city === city));
   };
 

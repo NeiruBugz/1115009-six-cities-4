@@ -24,12 +24,4 @@ module.exports = {
     historyApiFallback: true,
   },
   devtool: 'source-map',
-  resolve: {
-    alias: {
-      mocks: path.resolve(__dirname, 'src/mocks'),
-      components: path.resolve(__dirname, 'src/components'),
-      store: path.resolve(__dirname, 'src/store'),
-      types: path.resolve(__dirname, 'src/prop-types'),
-    }
-  }
 };

@@ -7,6 +7,10 @@ class Map extends PureComponent {
     super(props);
     this.mapRef = createRef();
     this.map = null;
+    this._icon = icon({
+      iconUrl: `img/pin.svg`,
+      iconSize: [30, 30]
+    });
   }
 
   componentDidMount() {
@@ -15,11 +19,7 @@ class Map extends PureComponent {
     }
 
     const {city, zoom, coordinates} = this.props;
-
-    const customIcon = icon({
-      iconUrl: `img/pin.svg`,
-      iconSize: [30, 30]
-    });
+    const {_icon} = this;
 
     this.map = map(this.mapRef.current, {
       zoom,
@@ -34,7 +34,16 @@ class Map extends PureComponent {
       attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
     }).addTo(this.map);
 
-    coordinates.forEach((offer) => marker(offer, {customIcon}).addTo(this.map));
+    coordinates.forEach((offer) => marker(offer, {_icon}).addTo(this.map));
+  }
+
+  componentDidUpdate(prevProps) {
+    const {_icon} = this;
+    const {city, coordinates} = this.props;
+    if (city !== prevProps.city) {
+      this.map.setView(this.props.city);
+      coordinates.forEach((offer) => marker(offer, {_icon}).addTo(this.map));
+    }
   }
 
   render() {

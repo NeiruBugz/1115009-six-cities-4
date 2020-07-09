@@ -5,8 +5,9 @@ import {connect} from 'react-redux';
 import OffersList from '../offers-list/offers-list.jsx';
 import Map from '../map/map.jsx';
 import CitiesList from '../cities-list/cities-list.jsx';
+import EmptyMain from '../empty-main/empty-main.jsx';
 
-import {offerList} from 'types/offer.types';
+import {offerList} from '../../prop-types/offer.types';
 
 const Main = ({rentOffers, onTitleClick, cities, city}) => {
   const offersCoordinates = rentOffers.map((offer) => offer.coordinates);
@@ -55,41 +56,43 @@ const Main = ({rentOffers, onTitleClick, cities, city}) => {
       <main className="page__main page__main--index">
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
-          <CitiesList cities={cities} selectedCity={city}/>
+          <CitiesList cities={cities} selectedCity={city.name} />
         </div>
-        <div className="cities">
-          <div className="cities__places-container container">
-            <section className="cities__places places">
-              <h2 className="visually-hidden">Places</h2>
-              <b className="places__found">{rentOffers.length} places to stay in {city}</b>
-              <form className="places__sorting" action="#" method="get">
-                <span className="places__sorting-caption">Sort by</span>
-                <span className="places__sorting-type" tabIndex="0">
+        {rentOffers.length === 0 ? <EmptyMain city={city.name} /> :
+          <div className="cities">
+            <div className="cities__places-container container">
+              <section className="cities__places places">
+                <h2 className="visually-hidden">Places</h2>
+                <b className="places__found">{rentOffers.length} places to stay in {city.name}</b>
+                <form className="places__sorting" action="#" method="get">
+                  <span className="places__sorting-caption">Sort by</span>
+                  <span className="places__sorting-type" tabIndex="0">
                   Popular
-                  <svg className="places__sorting-arrow" width="7" height="4">
-                    <use xlinkHref="#icon-arrow-select"></use>
-                  </svg>
-                </span>
-                <ul className="places__options places__options--custom places__options--opened">
-                  <li className="places__option places__option--active" tabIndex="0">Popular</li>
-                  <li className="places__option" tabIndex="0">Price: low to high</li>
-                  <li className="places__option" tabIndex="0">Price: high to low</li>
-                  <li className="places__option" tabIndex="0">Top rated first</li>
-                </ul>
-              </form>
-              <OffersList offers={rentOffers} onTitleClick={onTitleClick} />
-            </section>
-            <div className="cities__right-section">
-              <section className="cities__map map">
-                <Map
-                  city={[52.38333, 4.9]}
-                  zoom={12}
-                  coordinates={offersCoordinates}
-                />
+                    <svg className="places__sorting-arrow" width="7" height="4">
+                      <use xlinkHref="#icon-arrow-select"></use>
+                    </svg>
+                  </span>
+                  <ul className="places__options places__options--custom places__options--opened">
+                    <li className="places__option places__option--active" tabIndex="0">Popular</li>
+                    <li className="places__option" tabIndex="0">Price: low to high</li>
+                    <li className="places__option" tabIndex="0">Price: high to low</li>
+                    <li className="places__option" tabIndex="0">Top rated first</li>
+                  </ul>
+                </form>
+                <OffersList offers={rentOffers} onTitleClick={onTitleClick} />
               </section>
+              <div className="cities__right-section">
+                <section className="cities__map map">
+                  <Map
+                    city={city.coordinates}
+                    zoom={12}
+                    coordinates={offersCoordinates}
+                  />
+                </section>
+              </div>
             </div>
           </div>
-        </div>
+        }
       </main>
     </div>
   </Fragment>;
@@ -103,7 +106,7 @@ Main.propTypes = {
         coordinates: PropTypes.arrayOf(PropTypes.number),
         name: PropTypes.string
       })).isRequired,
-  city: PropTypes.string.isRequired,
+  city: PropTypes.shape().isRequired,
 };
 
 const mapStateToProps = (state) => ({
