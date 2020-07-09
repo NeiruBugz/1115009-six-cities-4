@@ -29,6 +29,7 @@ module.exports = {
       mocks: path.resolve(__dirname, 'src/mocks'),
       components: path.resolve(__dirname, 'src/components'),
       store: path.resolve(__dirname, 'src/store'),
+      types: path.resolve(__dirname, 'src/prop-types'),
     }
   }
 };

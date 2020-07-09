@@ -5,8 +5,8 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Main from '../main/main.jsx';
 import DetailedOffer from '../detailed-offer/detailed-offer.jsx';
 
-import {offers} from '../../mocks/offers';
-import {offerList} from '../../prop-types/offer.types';
+import {offers} from 'mocks/offers';
+import {offerList} from 'types/offer.types';
 
 class App extends PureComponent {
   constructor(props) {
@@ -28,7 +28,7 @@ class App extends PureComponent {
 
     if (activeOffer === -1) {
       return (
-        <Main rentOffers={rentOffers} onTitleClick={(idx) => this.handleTitleClick(idx)} />
+        <Main onTitleClick={(idx) => this.handleTitleClick(idx)} />
       );
     }
 
