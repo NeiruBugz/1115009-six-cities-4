@@ -14,7 +14,7 @@ const initialState = {
   offers: mockOffers.filter((offer) => offer.city === `Amsterdam`),
 };
 
-const ActionTypes = {
+export const ActionTypes = {
   SET_CITY: `SET_CITY`,
   SET_OFFERS: `SET_OFFERS`,
 };
