@@ -7,10 +7,13 @@ import {reducer} from './store/reducer';
 
 import App from './components/app/app.jsx';
 
-import {offers} from 'mocks/offers';
-import {cities} from 'mocks/cities';
+import {offers} from './mocks/offers';
+import {cities} from './mocks/cities';
 
-const store = createStore(reducer);
+const store = createStore(
+    reducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 const baseSettings = {
   rentOffers: offers,

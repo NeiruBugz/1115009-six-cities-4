@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import {setCity, setOffers} from '../../store/reducer';
-import {offerShape} from '../../prop-types/offer.types';
 
-const CitiesList = ({selectedCity, cities, onCityChange, offers, onOffersChange}) => {
+import {offers as defOffers} from '../../mocks/offers';
+
+const CitiesList = ({selectedCity, cities, onCityChange, onOffersChange}) => {
 
   const handleCityClick = (city) => {
     const cityCoordinates = cities.filter((cityObject) => cityObject.name === city)[0].coordinates;
     onCityChange({coordinates: cityCoordinates, name: city});
-    onOffersChange(offers.filter((offer) => offer.city === city));
+    onOffersChange(defOffers.filter((offer) => offer.city === city));
   };
 
   const listMarkup = cities.map((city, index) => {
@@ -43,7 +44,6 @@ CitiesList.propTypes = {
       })).isRequired,
   onCityChange: PropTypes.func.isRequired,
   onOffersChange: PropTypes.func.isRequired,
-  offers: PropTypes.arrayOf(offerShape)
 };
 
 const mapStateToProps = (state) => ({

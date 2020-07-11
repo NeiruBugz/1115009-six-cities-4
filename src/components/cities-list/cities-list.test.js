@@ -10,7 +10,7 @@ it(`should render CitiesList correctly`, function () {
         onCityChange={() => {}}
         onOffersChange={() => {}}
         cities={citiesWithCoordinates}
-        selectedCity={citiesWithCoordinates[0].city}
+        selectedCity={citiesWithCoordinates[0].name}
       />
   ).toJSON();
 
