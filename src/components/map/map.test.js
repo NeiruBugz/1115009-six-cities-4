@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import Map from './map.jsx';
+import {Map} from './map.jsx';
 
 const mockMapProps = {
   city: [52.38333, 4.9],
@@ -18,7 +18,7 @@ describe(`Map renders correctly`, () => {
   it(`should `, () => {
     const {city, zoom, coordinates} = mockMapProps;
     const map = renderer.create(
-        <Map city={city} zoom={zoom} coordinates={coordinates} />
+        <Map city={city} zoom={zoom} coordinates={coordinates} activeCard={[0, 0]}/>
     ).toJSON();
 
     expect(map).toMatchSnapshot();

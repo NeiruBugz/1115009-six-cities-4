@@ -1,9 +1,11 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
 import OfferCard from '../offer-card/offer-card.jsx';
 
 import {offerList} from '../../prop-types/offer.types';
+import {setActiveCard} from '../../store/reducer';
 
 class OffersList extends PureComponent {
   constructor(props) {
@@ -17,10 +19,12 @@ class OffersList extends PureComponent {
 
   _handleOnCardMouseEnter(card) {
     this.setState({activeCard: card});
+    this.props.onSetActiveCard(card.coordinates);
   }
 
   _handleOnCardMouseLeave() {
     this.setState({activeCard: {}});
+    this.props.onSetActiveCard([]);
   }
 
   render() {
@@ -53,6 +57,13 @@ OffersList.propTypes = {
   offers: offerList.isRequired,
   onTitleClick: PropTypes.func.isRequired,
   isNearPlaces: PropTypes.bool,
+  onSetActiveCard: PropTypes.func.isRequired,
 };
 
-export default OffersList;
+const mapDispatchToProps = (dispatch) => ({
+  onSetActiveCard: (card) => dispatch(setActiveCard(card)),
+});
+
+export {OffersList};
+
+export default connect(null, mapDispatchToProps)(OffersList);

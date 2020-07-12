@@ -12,7 +12,7 @@ const mockStore = configureStore([]);
 
 describe(`Main renders correctly`, () => {
   it(`should render Main component with passed props`, () => {
-    const store = mockStore({offers, cities: citiesWithCoordinates, city: citiesWithCoordinates[0]});
+    const store = mockStore({offers, cities: citiesWithCoordinates, city: citiesWithCoordinates[0], sort: `Popular`, activeCard: [0, 0]});
     const main = renderer.create(
         <Provider store={store}>
           <Main

@@ -348,7 +348,7 @@ exports[`OffersList renders correctly should render OffersList with passed props
             className="place-card__price-value"
           >
             €
-            120
+            100
           </b>
           <span
             className="place-card__price-text"
@@ -386,7 +386,7 @@ exports[`OffersList renders correctly should render OffersList with passed props
           <span
             style={
               Object {
-                "width": "80%",
+                "width": "60%",
               }
             }
           />
@@ -454,7 +454,7 @@ exports[`OffersList renders correctly should render OffersList with passed props
             className="place-card__price-value"
           >
             €
-            120
+            90
           </b>
           <span
             className="place-card__price-text"
@@ -553,7 +553,7 @@ exports[`OffersList renders correctly should render OffersList with passed props
             className="place-card__price-value"
           >
             €
-            120
+            100
           </b>
           <span
             className="place-card__price-text"

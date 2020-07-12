@@ -16,7 +16,7 @@ const mockStore = configureStore([]);
 
 describe(`App renders correctly`, () => {
   it(`should render App component with passed props`, () => {
-    const store = mockStore({offers, cities: citiesWithCoordinates, city: citiesWithCoordinates[0]});
+    const store = mockStore({offers, cities: citiesWithCoordinates, city: citiesWithCoordinates[0], sort: `Popular`, activeCard: [0, 0]});
     const tree = renderer.create(
         <Provider store={store}>
           <App settings={mockSettings} />
