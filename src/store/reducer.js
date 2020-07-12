@@ -12,11 +12,13 @@ const initialState = {
     {coordinates: [51.2217, 6.7762], name: `Dusseldorf`},
   ],
   offers: mockOffers.filter((offer) => offer.city === `Amsterdam`),
+  sort: `Popular`,
 };
 
 export const ActionTypes = {
   SET_CITY: `SET_CITY`,
   SET_OFFERS: `SET_OFFERS`,
+  CHANGE_SORT_TYPE: `CHANGE_SORT_TYPE`,
 };
 
 export const setCity = (city) => ({
@@ -29,10 +31,17 @@ export const setOffers = (offers) => ({
   payload: offers,
 });
 
+export const setSortType = (sortType) => ({
+  type: ActionTypes.CHANGE_SORT_TYPE,
+  payload: sortType,
+});
+
 export const reducer = (state = initialState, {type, payload}) => {
   switch (type) {
     case ActionTypes.SET_CITY:
       return Object.assign({}, state, {city: payload});
+    case ActionTypes.CHANGE_SORT_TYPE:
+      return Object.assign({}, state, {sort: payload});
     case ActionTypes.SET_OFFERS:
       return Object.assign({}, state, {offers: payload});
     default:
