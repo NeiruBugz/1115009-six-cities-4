@@ -28,7 +28,7 @@ class App extends PureComponent {
 
     if (activeOffer === -1) {
       return (
-        <Main rentOffers={rentOffers} onTitleClick={(idx) => this.handleTitleClick(idx)} />
+        <Main onTitleClick={(idx) => this.handleTitleClick(idx)} />
       );
     }
 
