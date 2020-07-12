@@ -2,7 +2,6 @@ import React, {PureComponent, createRef} from 'react';
 import PropTypes from 'prop-types';
 import {icon, map, tileLayer, marker} from 'leaflet';
 import {connect} from 'react-redux';
-import {offerShape} from '../../prop-types/offer.types';
 
 class Map extends PureComponent {
   constructor(props) {
@@ -25,7 +24,7 @@ class Map extends PureComponent {
 
     coordinates.forEach((coords) => {
       const mrk = marker(coords, {
-        icon: JSON.stringify(coords) === JSON.stringify(activeCard.coordinates) ? this._activeIcon : this._icon
+        icon: JSON.stringify(coords) === JSON.stringify(activeCard) ? this._activeIcon : this._icon
       });
       mrk.addTo(this.map);
       this._markers.push(marker);
@@ -73,11 +72,7 @@ Map.propTypes = {
   city: PropTypes.arrayOf(PropTypes.number).isRequired,
   zoom: PropTypes.number.isRequired,
   coordinates: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
-  activeCard: PropTypes.shape({}),
-};
-
-Map.defaultProps = {
-  activeCard: {},
+  activeCard: PropTypes.arrayOf(PropTypes.number).isRequired,
 };
 
 const mapStateToProps = (state) => ({

@@ -13,6 +13,8 @@ const mockedState = {
     {coordinates: [51.2217, 6.7762], name: `Dusseldorf`},
   ],
   offers: testOffers.filter((offer) => offer.city === `Amsterdam`),
+  sort: `Popular`,
+  activeCard: [0, 0],
 };
 
 describe(`reducer unit tests`, () => {
@@ -21,6 +23,8 @@ describe(`reducer unit tests`, () => {
       city: mockedState.city,
       cities: mockedState.cities,
       offers: mockedState.offers,
+      sort: `Popular`,
+      activeCard: [0, 0],
     });
   });
 
@@ -32,6 +36,8 @@ describe(`reducer unit tests`, () => {
       city: {coordinates: [48.864716, 2.349014], name: `Paris`},
       cities: mockedState.cities,
       offers: mockedState.offers,
+      sort: `Popular`,
+      activeCard: [0, 0],
     });
   });
 
@@ -44,6 +50,8 @@ describe(`reducer unit tests`, () => {
       city: mockedState.city,
       cities: mockedState.cities,
       offers: mockedState.offers,
+      sort: `Popular`,
+      activeCard: [0, 0],
     });
   });
 });

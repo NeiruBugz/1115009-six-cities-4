@@ -1,8 +1,8 @@
 import React, {Fragment} from 'react';
 
 import ReviewsList from '../reviews-list/reviews-list.jsx';
-import Map from '../map/map.jsx';
-import OffersList from '../offers-list/offers-list.jsx';
+import {Map} from '../map/map.jsx';
+import {OffersList} from '../offers-list/offers-list.jsx';
 
 import {reviews} from '../../mocks/reviews';
 import {offerShape} from '../../prop-types/offer.types';
@@ -36,15 +36,15 @@ const DetailedOffer = ({offer}) => {
       <div style={{display: `none`}}>
         <svg xmlns="http://www.w3.org/2000/svg">
           <symbol id="icon-arrow-select" viewBox="0 0 7 4">
-            <path fillRule="evenodd" clipRule="evenodd" d="M0 0l3.5 2.813L7 0v1.084L3.5 4 0 1.084V0z"></path>
+            <path fillRule="evenodd" clipRule="evenodd" d="M0 0l3.5 2.813L7 0v1.084L3.5 4 0 1.084V0z"/>
           </symbol>
           <symbol id="icon-bookmark" viewBox="0 0 17 18">
             <path
-              d="M3.993 2.185l.017-.092V2c0-.554.449-1 .99-1h10c.522 0 .957.41.997.923l-2.736 14.59-4.814-2.407-.39-.195-.408.153L1.31 16.44 3.993 2.185z"></path>
+              d="M3.993 2.185l.017-.092V2c0-.554.449-1 .99-1h10c.522 0 .957.41.997.923l-2.736 14.59-4.814-2.407-.39-.195-.408.153L1.31 16.44 3.993 2.185z"/>
           </symbol>
           <symbol id="icon-star" viewBox="0 0 13 12">
             <path fillRule="evenodd" clipRule="evenodd"
-              d="M6.5 9.644L10.517 12 9.451 7.56 13 4.573l-4.674-.386L6.5 0 4.673 4.187 0 4.573 3.549 7.56 2.483 12 6.5 9.644z"></path>
+              d="M6.5 9.644L10.517 12 9.451 7.56 13 4.573l-4.674-.386L6.5 0 4.673 4.187 0 4.573 3.549 7.56 2.483 12 6.5 9.644z"/>
           </symbol>
         </svg>
       </div>
@@ -95,14 +95,14 @@ const DetailedOffer = ({offer}) => {
                   </h1>
                   <button className="property__bookmark-button button" type="button">
                     <svg className="property__bookmark-icon" width="31" height="33">
-                      <use xlinkHref="#icon-bookmark"></use>
+                      <use xlinkHref="#icon-bookmark"/>
                     </svg>
                     <span className="visually-hidden">To bookmarks</span>
                   </button>
                 </div>
                 <div className="property__rating rating">
                   <div className="property__stars rating__stars">
-                    <span style={{width: `${rating}%`}}></span>
+                    <span style={{width: `${rating}%`}}/>
                     <span className="visually-hidden">Rating</span>
                   </div>
                   <span className="property__rating-value rating__value">{ratingValue}</span>
@@ -159,7 +159,7 @@ const DetailedOffer = ({offer}) => {
                         type="radio" />
                       <label htmlFor="5-stars" className="reviews__rating-label form__rating-label" title="perfect">
                         <svg className="form__star-image" width="37" height="33">
-                          <use xlinkHref="#icon-star"></use>
+                          <use xlinkHref="#icon-star"/>
                         </svg>
                       </label>
 
@@ -167,7 +167,7 @@ const DetailedOffer = ({offer}) => {
                         type="radio" />
                       <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">
                         <svg className="form__star-image" width="37" height="33">
-                          <use xlinkHref="#icon-star"></use>
+                          <use xlinkHref="#icon-star"/>
                         </svg>
                       </label>
 
@@ -175,7 +175,7 @@ const DetailedOffer = ({offer}) => {
                         type="radio" />
                       <label htmlFor="3-stars" className="reviews__rating-label form__rating-label" title="not bad">
                         <svg className="form__star-image" width="37" height="33">
-                          <use xlinkHref="#icon-star"></use>
+                          <use xlinkHref="#icon-star"/>
                         </svg>
                       </label>
 
@@ -183,7 +183,7 @@ const DetailedOffer = ({offer}) => {
                         type="radio" />
                       <label htmlFor="2-stars" className="reviews__rating-label form__rating-label" title="badly">
                         <svg className="form__star-image" width="37" height="33">
-                          <use xlinkHref="#icon-star"></use>
+                          <use xlinkHref="#icon-star"/>
                         </svg>
                       </label>
 
@@ -192,12 +192,12 @@ const DetailedOffer = ({offer}) => {
                       <label htmlFor="1-star" className="reviews__rating-label form__rating-label"
                         title="terribly">
                         <svg className="form__star-image" width="37" height="33">
-                          <use xlinkHref="#icon-star"></use>
+                          <use xlinkHref="#icon-star"/>
                         </svg>
                       </label>
                     </div>
                     <textarea className="reviews__textarea form__textarea" id="review" name="review"
-                      placeholder="Tell how was your stay, what you like and what can be improved"></textarea>
+                      placeholder="Tell how was your stay, what you like and what can be improved"/>
                     <div className="reviews__button-wrapper">
                       <p className="reviews__help">
                         To submit review please make sure to set <span className="reviews__star">rating</span> and
@@ -220,6 +220,7 @@ const DetailedOffer = ({offer}) => {
                   [52.3809553943508, 4.939309666406198]
                 ].filter((coord) => JSON.stringify(coord) !== JSON.stringify(offer.coordinates))}
                 zoom={12}
+                activeCard={[0, 0]}
               />
             </section>
           </section>
@@ -234,6 +235,7 @@ const DetailedOffer = ({offer}) => {
                       .slice(0, 3)
                   }
                   onTitleClick={() => {}}
+                  onSetActiveCard={() => {}}
                   isNearPlaces
                 />
                 {/* <article className="near-places__card place-card">*/}

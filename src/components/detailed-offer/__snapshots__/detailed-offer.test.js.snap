@@ -405,7 +405,7 @@ Array [
                     <span
                       className="reviews__user-name"
                     >
-                      Mellany
+                      Max
                     </span>
                   </div>
                   <div
@@ -420,7 +420,7 @@ Array [
                         <span
                           style={
                             Object {
-                              "width": "100%",
+                              "width": "80%",
                             }
                           }
                         />
@@ -434,13 +434,13 @@ Array [
                     <p
                       className="reviews__text"
                     >
-                      I've got some good times with this place. Lovely
+                      A quiet cozy and picturesque that hides behind a a river by the unique lightness of Amsterdam. The building is green and from 18th century.
                     </p>
                     <time
                       className="reviews__time"
                       dateTime="2019-04-24"
                     >
-                      March 2019
+                      April 2019
                     </time>
                   </div>
                 </li>
@@ -882,7 +882,7 @@ Array [
                         className="place-card__price-value"
                       >
                         €
-                        120
+                        100
                       </b>
                       <span
                         className="place-card__price-text"
@@ -920,7 +920,7 @@ Array [
                       <span
                         style={
                           Object {
-                            "width": "80%",
+                            "width": "60%",
                           }
                         }
                       />

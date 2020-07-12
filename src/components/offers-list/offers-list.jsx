@@ -19,12 +19,12 @@ class OffersList extends PureComponent {
 
   _handleOnCardMouseEnter(card) {
     this.setState({activeCard: card});
-    this.props.onSetActiveCard(card);
+    this.props.onSetActiveCard(card.coordinates);
   }
 
   _handleOnCardMouseLeave() {
     this.setState({activeCard: {}});
-    this.props.onSetActiveCard({});
+    this.props.onSetActiveCard([]);
   }
 
   render() {

@@ -13,7 +13,7 @@ const initialState = {
   ],
   offers: mockOffers.filter((offer) => offer.city === `Amsterdam`),
   sort: `Popular`,
-  activeCard: {},
+  activeCard: [0, 0],
 };
 
 export const ActionTypes = {
