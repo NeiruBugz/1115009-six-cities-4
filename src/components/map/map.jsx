@@ -1,6 +1,8 @@
 import React, {PureComponent, createRef} from 'react';
 import PropTypes from 'prop-types';
 import {icon, map, tileLayer, marker} from 'leaflet';
+import {connect} from 'react-redux';
+import {offerShape} from '../../prop-types/offer.types';
 
 class Map extends PureComponent {
   constructor(props) {
@@ -11,6 +13,27 @@ class Map extends PureComponent {
       iconUrl: `img/pin.svg`,
       iconSize: [30, 30]
     });
+    this._activeIcon = icon({
+      iconUrl: `img/pin-active.svg`,
+      iconSize: [30, 30],
+    });
+    this._markers = [];
+  }
+
+  _createMarkers() {
+    const {coordinates, activeCard} = this.props;
+
+    coordinates.forEach((coords) => {
+      const mrk = marker(coords, {
+        icon: JSON.stringify(coords) === JSON.stringify(activeCard.coordinates) ? this._activeIcon : this._icon
+      });
+      mrk.addTo(this.map);
+      this._markers.push(marker);
+    });
+  }
+
+  _resetMarkers() {
+    this._markers = [];
   }
 
   componentDidMount() {
@@ -18,8 +41,7 @@ class Map extends PureComponent {
       return;
     }
 
-    const {city, zoom, coordinates} = this.props;
-    const {_icon} = this;
+    const {city, zoom} = this.props;
 
     this.map = map(this.mapRef.current, {
       zoom,
@@ -34,16 +56,12 @@ class Map extends PureComponent {
       attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
     }).addTo(this.map);
 
-    coordinates.forEach((offer) => marker(offer, {_icon}).addTo(this.map));
+    this._createMarkers();
   }
 
-  componentDidUpdate(prevProps) {
-    const {_icon} = this;
-    const {city, coordinates} = this.props;
-    if (city !== prevProps.city) {
-      this.map.setView(this.props.city);
-      coordinates.forEach((offer) => marker(offer, {_icon}).addTo(this.map));
-    }
+  componentDidUpdate() {
+    this._resetMarkers();
+    this._createMarkers();
   }
 
   render() {
@@ -55,6 +73,17 @@ Map.propTypes = {
   city: PropTypes.arrayOf(PropTypes.number).isRequired,
   zoom: PropTypes.number.isRequired,
   coordinates: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
+  activeCard: PropTypes.shape({}),
 };
 
-export default Map;
+Map.defaultProps = {
+  activeCard: {},
+};
+
+const mapStateToProps = (state) => ({
+  activeCard: state.activeCard,
+});
+
+export {Map};
+
+export default connect(mapStateToProps, null)(Map);

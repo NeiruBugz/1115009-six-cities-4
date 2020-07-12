@@ -13,12 +13,14 @@ const initialState = {
   ],
   offers: mockOffers.filter((offer) => offer.city === `Amsterdam`),
   sort: `Popular`,
+  activeCard: {},
 };
 
 export const ActionTypes = {
   SET_CITY: `SET_CITY`,
   SET_OFFERS: `SET_OFFERS`,
-  CHANGE_SORT_TYPE: `CHANGE_SORT_TYPE`,
+  SET_SORT_TYPE: `SET_SORT_TYPE`,
+  SET_ACTIVE_CARD: `SET_ACTIVE_CARD`,
 };
 
 export const setCity = (city) => ({
@@ -32,18 +34,25 @@ export const setOffers = (offers) => ({
 });
 
 export const setSortType = (sortType) => ({
-  type: ActionTypes.CHANGE_SORT_TYPE,
+  type: ActionTypes.SET_SORT_TYPE,
   payload: sortType,
+});
+
+export const setActiveCard = (card) => ({
+  type: ActionTypes.SET_ACTIVE_CARD,
+  payload: card,
 });
 
 export const reducer = (state = initialState, {type, payload}) => {
   switch (type) {
     case ActionTypes.SET_CITY:
       return Object.assign({}, state, {city: payload});
-    case ActionTypes.CHANGE_SORT_TYPE:
+    case ActionTypes.SET_SORT_TYPE:
       return Object.assign({}, state, {sort: payload});
     case ActionTypes.SET_OFFERS:
       return Object.assign({}, state, {offers: payload});
+    case ActionTypes.SET_ACTIVE_CARD:
+      return Object.assign({}, state, {activeCard: payload});
     default:
       return state;
   }
