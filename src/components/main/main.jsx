@@ -9,6 +9,9 @@ import EmptyMain from '../empty-main/empty-main.jsx';
 import Sort from '../sort/sort.jsx';
 
 import {offerList} from '../../prop-types/offer.types';
+import withListState from '../../hocs/with-list-state/with-list-state';
+
+const SortHOC = withListState(Sort);
 
 const Main = ({rentOffers, onTitleClick, cities, city}) => {
   const offersCoordinates = rentOffers.map((offer) => offer.coordinates);
@@ -65,7 +68,7 @@ const Main = ({rentOffers, onTitleClick, cities, city}) => {
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
                 <b className="places__found">{rentOffers.length} places to stay in {city.name}</b>
-                <Sort />
+                <SortHOC />
                 <OffersList offers={rentOffers} onTitleClick={onTitleClick} />
               </section>
               <div className="cities__right-section">

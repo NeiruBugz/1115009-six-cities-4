@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
@@ -7,47 +7,34 @@ import OfferCard from '../offer-card/offer-card.jsx';
 import {offerList} from '../../prop-types/offer.types';
 import {setActiveCard} from '../../store/reducer';
 
-class OffersList extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeCard: {},
-    };
-    this.handleOnCardMouseEnter = this._handleOnCardMouseEnter.bind(this);
-    this.handleOnCardMouseLeave = this._handleOnCardMouseLeave.bind(this);
-  }
+const OffersList = ({onSetActiveCard, offers, onTitleClick, isNearPlaces}) => {
 
-  _handleOnCardMouseEnter(card) {
-    this.setState({activeCard: card});
-    this.props.onSetActiveCard(card.coordinates);
-  }
+  const handleOnCardMouseEnter = (card) => {
+    onSetActiveCard(card.coordinates);
+  };
 
-  _handleOnCardMouseLeave() {
-    this.setState({activeCard: {}});
-    this.props.onSetActiveCard([]);
-  }
+  const handleOnCardMouseLeave = () => {
+    onSetActiveCard([]);
+  };
 
-  render() {
-    const {offers, onTitleClick, isNearPlaces} = this.props;
-    return (
-      <div className="cities__places-list places__list tabs__content">
-        {offers.map((offer, idx) => {
-          return (
-            <OfferCard
-              offer={offer}
-              handleMouseOver={this.handleOnCardMouseEnter}
-              handleMouseLeave={this.handleOnCardMouseLeave}
-              onTitleClick={onTitleClick}
-              index={idx}
-              key={offer.id}
-              isNearPlace={isNearPlaces}
-            />
-          );
-        })}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="cities__places-list places__list tabs__content">
+      {offers.map((offer, idx) => {
+        return (
+          <OfferCard
+            offer={offer}
+            handleMouseOver={handleOnCardMouseEnter}
+            handleMouseLeave={handleOnCardMouseLeave}
+            onTitleClick={onTitleClick}
+            index={idx}
+            key={offer.id}
+            isNearPlace={isNearPlaces}
+          />
+        );
+      })}
+    </div>
+  );
+};
 
 OffersList.defaultProps = {
   isNearPlaces: false,

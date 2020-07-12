@@ -1,4 +1,5 @@
 import {offers as mockOffers} from '../mocks/offers';
+import {sortOffers} from '../shared/utils/functions';
 
 const initialState = {
   city:
@@ -48,7 +49,7 @@ export const reducer = (state = initialState, {type, payload}) => {
     case ActionTypes.SET_CITY:
       return Object.assign({}, state, {city: payload});
     case ActionTypes.SET_SORT_TYPE:
-      return Object.assign({}, state, {sort: payload});
+      return Object.assign({}, state, {sort: payload, offers: sortOffers(state.offers, payload)});
     case ActionTypes.SET_OFFERS:
       return Object.assign({}, state, {offers: payload});
     case ActionTypes.SET_ACTIVE_CARD:
