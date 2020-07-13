@@ -57,7 +57,7 @@ const Main = ({rentOffers, onTitleClick, cities, city}) => {
         </div>
       </header>
 
-      <main className="page__main page__main--index">
+      <main className={`page__main page__main--index ${rentOffers.length === 0 ? `page__main--index-empty` : ``}`}>
         <h1 className="visually-hidden">Cities</h1>
         <div className="tabs">
           <CitiesList cities={cities} selectedCity={city.name} />
