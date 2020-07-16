@@ -1,15 +1,25 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 
-import {offerShape} from '../../prop-types/offer.types';
+import {Offer} from "../../types/offer.types";
 
-const OfferCard = ({offer, handleMouseOver, handleMouseLeave, onTitleClick, index, isNearPlace}) => {
-  const {mark, type, title, price, priceText, image, rating} = offer;
+interface OfferCardProps {
+  offer: Offer;
+  index: number;
+  isNearPlace: boolean;
+  onTitleClick: (index: number) => {};
+  handleMouseOver: (offer: Offer) => void;
+  handleMouseLeave: () => void;
+}
 
-  const handleTitleClick = (idx, evt) => {
+const OfferCard:FC<OfferCardProps> = (props: OfferCardProps) => {
+  const {offer, index, isNearPlace, onTitleClick, handleMouseOver, handleMouseLeave} = props;
+  const {title, price, preview_image, is_premium, type, rating} = offer;
+
+
+  const handleTitleClick = (idx: number, evt: React.MouseEvent<HTMLAnchorElement>) => {
     evt.preventDefault();
     onTitleClick(idx);
-  };
+  }
 
   return (
     <article
@@ -17,16 +27,16 @@ const OfferCard = ({offer, handleMouseOver, handleMouseLeave, onTitleClick, inde
       onMouseEnter={() => handleMouseOver(offer)}
       onMouseLeave={handleMouseLeave}
     >
-      {mark &&
-        <div className="place-card__mark">
-          <span>{mark}</span>
-        </div>
+      {is_premium &&
+      <div className="place-card__mark">
+        <span>Premium</span>
+      </div>
       }
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
           <img
             className="place-card__image"
-            src={image}
+            src={preview_image}
             width="260"
             height="200"
             alt="Place image"
@@ -37,7 +47,7 @@ const OfferCard = ({offer, handleMouseOver, handleMouseLeave, onTitleClick, inde
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{price}</b>
-            <span className="place-card__price-text">&#47;&nbsp;{priceText}</span>
+            <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
           <button className="place-card__bookmark-button button" type="button">
             <svg className="place-card__bookmark-icon" width="18" height="19">
@@ -59,17 +69,6 @@ const OfferCard = ({offer, handleMouseOver, handleMouseLeave, onTitleClick, inde
       </div>
     </article>
   );
-};
+}
 
-OfferCard.defaultProps = {
-  isNearPlace: false,
-};
-
-OfferCard.propTypes = {
-  offer: offerShape.isRequired,
-  handleMouseOver: PropTypes.func.isRequired,
-  handleMouseLeave: PropTypes.func.isRequired,
-  index: PropTypes.number.isRequired,
-  onTitleClick: PropTypes.func.isRequired,
-  isNearPlace: PropTypes.bool,
-};
+export default OfferCard;

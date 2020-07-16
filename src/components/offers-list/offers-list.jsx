@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import OfferCard from '../offer-card/offer-card.jsx';
+import OfferCard from '../offer-card/offer-card.tsx';
 
 import {offerList} from '../../prop-types/offer.types';
 import {setActiveCard} from '../../store/reducer';
@@ -52,5 +52,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {OffersList};
-
-export default connect(null, mapDispatchToProps)(OffersList);

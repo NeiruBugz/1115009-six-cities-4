@@ -2,10 +2,10 @@ import React, {Fragment} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
-import OffersList from '../offers-list/offers-list.jsx';
+import OffersList from '../offers-list/offers-list';
 import Map from '../map/map.jsx';
-import CitiesList from '../cities-list/cities-list.jsx';
-import EmptyMain from '../empty-main/empty-main.jsx';
+import CitiesList from '../cities-list/cities-list';
+import EmptyMain from '../empty-main/empty-main';
 import Sort from '../sort/sort.jsx';
 
 import {offerList} from '../../prop-types/offer.types';
@@ -74,7 +74,7 @@ const Main = ({rentOffers, onTitleClick, cities, city}) => {
               <div className="cities__right-section">
                 <section className="cities__map map">
                   <Map
-                    city={city.coordinates}
+                    city={city.location}
                     zoom={12}
                     coordinates={offersCoordinates}
                   />
@@ -93,7 +93,7 @@ Main.propTypes = {
   onTitleClick: PropTypes.func.isRequired,
   cities: PropTypes.arrayOf(
       PropTypes.shape({
-        coordinates: PropTypes.arrayOf(PropTypes.number),
+        location: PropTypes.arrayOf(PropTypes.number),
         name: PropTypes.string
       })).isRequired,
   city: PropTypes.shape().isRequired,
