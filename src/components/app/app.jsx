@@ -1,11 +1,10 @@
 import React, {PureComponent} from 'react';
-import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 import Main from '../main/main.jsx';
 import DetailedOffer from '../detailed-offer/detailed-offer.jsx';
 
-import {offers} from '../../mocks/offers';
 import {offerList} from '../../prop-types/offer.types';
 
 class App extends PureComponent {
@@ -23,7 +22,7 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {rentOffers} = this.props.settings;
+    const {offers} = this.props;
     const {activeOffer} = this.state;
 
     if (activeOffer === -1) {
@@ -32,7 +31,7 @@ class App extends PureComponent {
       );
     }
 
-    if (rentOffers[activeOffer]) {
+    if (offers[activeOffer]) {
       return <DetailedOffer offer={offers[activeOffer]} />;
     }
 
@@ -40,6 +39,7 @@ class App extends PureComponent {
   }
 
   render() {
+    const {offers} = this.props;
     return (
       <BrowserRouter>
         <Switch>
@@ -47,7 +47,7 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/dev-offer">
-            <DetailedOffer offer={this.props.settings.rentOffers[0]} />
+            <DetailedOffer offer={offers[0]} />
           </Route>
         </Switch>
       </BrowserRouter>
@@ -55,10 +55,14 @@ class App extends PureComponent {
   }
 }
 
+const mapStateToProps = (state) => ({
+  offers: state.offers,
+});
+
 App.propTypes = {
-  settings: PropTypes.shape({
-    rentOffers: offerList.isRequired,
-  }).isRequired,
+  offers: offerList.isRequired,
 };
 
-export default App;
+export {App};
+
+export default connect(mapStateToProps, null)(App);

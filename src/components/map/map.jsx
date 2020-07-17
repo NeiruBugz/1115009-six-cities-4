@@ -10,11 +10,11 @@ class Map extends PureComponent {
     this.map = null;
     this._icon = icon({
       iconUrl: `img/pin.svg`,
-      iconSize: [30, 30]
+      iconSize: [27, 39]
     });
     this._activeIcon = icon({
       iconUrl: `img/pin-active.svg`,
-      iconSize: [30, 30],
+      iconSize: [27, 39],
     });
     this._markers = [];
   }
