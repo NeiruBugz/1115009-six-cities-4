@@ -63,7 +63,7 @@ class App extends React.PureComponent<AppProps, AppState> {
   }
 }
 const mapStateToProps = (state) => ({
-  offers: state.offers,
+  offers: state.offers.offers,
 });
 
 export { App };

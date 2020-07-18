@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { setCity, setOffers } from '../../store/reducer';
+import { setCity, setOffers } from '../../store/offers/reducer';
 
 import { City } from "../../types/cities.types";
 import { Offer } from "../../types/offer.types";
@@ -48,7 +48,7 @@ const CitiesList: React.FC<CitiesListProps> = (
 }
 
 const mapStateToProps = (state) => ({
-  offers: state.offers,
+  offers: state.offers.offers,
 });
 
 const mapDispatchToProps = (dispatch) => ({

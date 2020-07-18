@@ -91,7 +91,7 @@ class Map extends React.PureComponent<MapProps> {
 }
 
 const mapStateToProps = (state) => ({
-  activeCard: state.activeCard,
+  activeCard: state.offers.activeCard,
 });
 
 export {Map};

@@ -100,9 +100,9 @@ const Main: React.FC<MainProps> = ({ rentOffers, onTitleClick, cities, city }) =
 };
 
 const mapStateToProps = (state) => ({
-  cities: state.cities,
-  rentOffers: state.offers,
-  city: state.city,
+  cities: state.offers.cities,
+  rentOffers: state.offers.offers,
+  city: state.offers.city,
 });
 
 export { Main };

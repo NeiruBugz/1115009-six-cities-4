@@ -1,4 +1,4 @@
-import { reducer, setOffers, setSortType, setCity, setActiveCard } from './reducer';
+import { reducer, setOffers, setSortType, setCity, setActiveCard } from './offers/reducer';
 import { offers as mockOffers, offers as testOffers } from '../mocks/offers';
 import { SORT_TYPES } from '../shared/utils/consts';
 

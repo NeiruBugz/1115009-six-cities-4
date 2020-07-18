@@ -1,6 +1,6 @@
-import { offers as mockOffers } from '../mocks/offers';
-import { sortOffers } from '../shared/utils/functions';
-import { OfferState } from "../types/offer.state.types";
+import { offers as mockOffers } from '../../mocks/offers';
+import { sortOffers } from '../../shared/utils/functions';
+import { OfferState } from "../../types/offer.state.types";
 
 const initialState: OfferState = {
   city:

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import OfferCard from '../offer-card/offer-card';
 
-import { setActiveCard } from '../../store/reducer';
+import { setActiveCard } from '../../store/offers/reducer';
 
 import { Offer } from "../../types/offer.types";
 

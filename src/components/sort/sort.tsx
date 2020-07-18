@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 
-import { setSortType } from '../../store/reducer';
+import { setSortType } from '../../store/offers/reducer';
 
 import { SORT_TYPES } from '../../shared/utils/consts';
 
@@ -48,7 +48,7 @@ const Sort: React.FC<SortProps> = ({ isListOpen, sortType, onChangeSortType, onS
 };
 
 const mapStateToProps = (state) => ({
-  sortType: state.sort,
+  sortType: state.offers.sort,
 });
 
 const mapDispatchToProps = (dispatch) => ({
