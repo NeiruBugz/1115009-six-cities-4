@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { setCity, setOffers } from '../../store/reducer';
@@ -15,7 +15,7 @@ interface CitiesListProps {
   onOffersChange: (offers: Offer[]) => {};
 }
 
-const CitiesList: FC<CitiesListProps> = (
+const CitiesList: React.FC<CitiesListProps> = (
   { selectedCity, cities, onCityChange, onOffersChange }
 ) => {
 

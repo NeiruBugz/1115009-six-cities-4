@@ -3,11 +3,10 @@
     "rootDir": "./src",
     "outDir": "./dist",
     "sourceMap": true,
-    "module": "CommonJS",
-    "target": "ES2016",
+    "module": "commonjs",
+    "target": "es2016",
     "jsx": "react",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": false,
     "lib": ["dom"]
   },
   "exclude": [

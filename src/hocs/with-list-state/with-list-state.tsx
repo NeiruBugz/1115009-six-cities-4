@@ -1,4 +1,4 @@
-import React, {PureComponent} from 'react';
+import * as React from 'react';
 import { Subtract } from "utility-types";
 
 const withListState = (Component: React.Component | React.ReactNode | any) => {
@@ -6,7 +6,7 @@ const withListState = (Component: React.Component | React.ReactNode | any) => {
 
   type T = Subtract<P, {}>;
 
-  return class WithListState extends PureComponent<T, P> {
+  return class WithListState extends React.PureComponent<T, P> {
     constructor(props) {
       super(props);
       this.state = {

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import * as React from 'react';
 
 type ReviewProps = {
   userAvatar: string;
@@ -8,7 +8,7 @@ type ReviewProps = {
   rating: number;
 };
 
-const Review:FC<ReviewProps> = ({userAvatar, userName, comment, date, rating}) => {
+const Review:React.FC<ReviewProps> = ({userAvatar, userName, comment, date, rating}) => {
   return (
     <li className="reviews__item">
       <div className="reviews__user user">

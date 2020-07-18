@@ -1,4 +1,4 @@
-import React, {PureComponent, createRef, RefObject} from 'react';
+import * as React from 'react';
 import {
   icon,
   map,
@@ -19,8 +19,8 @@ type MapProps = {
   zoom: number;
 };
 
-class Map extends PureComponent<MapProps> {
-  mapRef: RefObject<HTMLDivElement>;
+class Map extends React.PureComponent<MapProps> {
+  mapRef: React.RefObject<HTMLDivElement>;
   map: LeafletMap;
   _icon: Icon;
   _activeIcon: Icon;
@@ -28,7 +28,7 @@ class Map extends PureComponent<MapProps> {
 
   constructor(props) {
     super(props);
-    this.mapRef = createRef();
+    this.mapRef = React.createRef();
     this.map = null;
     this._icon = icon({
       iconUrl: `img/pin.svg`,

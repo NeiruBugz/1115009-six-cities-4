@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 
 import OfferCard from '../offer-card/offer-card';
@@ -14,7 +14,7 @@ interface OffersListProps {
   onSetActiveCard: (offerCoordinates: number[]) => void;
 }
 
-const OffersList: FC<OffersListProps> = ({ offers, onTitleClick, isNearPlaces, onSetActiveCard }) => {
+const OffersList: React.FC<OffersListProps> = ({ offers, onTitleClick, isNearPlaces, onSetActiveCard }) => {
 
   const handleOnCardMouseEnter = ({ location }) => {
     const { longitude, latitude } = location;

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 
 import { setSortType } from '../../store/reducer';
@@ -12,7 +12,7 @@ interface SortProps {
   onSelectOpen: () => void;
 }
 
-const Sort: FC<SortProps> = ({ isListOpen, sortType, onChangeSortType, onSelectOpen }) => {
+const Sort: React.FC<SortProps> = ({ isListOpen, sortType, onChangeSortType, onSelectOpen }) => {
 
   return (
     <form className="places__sorting" action="#" method="get">

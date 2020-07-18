@@ -1,4 +1,4 @@
-import React, { FC, Fragment } from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
 
 import OffersList from '../offers-list/offers-list';
@@ -22,12 +22,12 @@ type MainProps = {
   city: City;
 };
 
-const Main: FC<MainProps> = ({ rentOffers, onTitleClick, cities, city }) => {
+const Main: React.FC<MainProps> = ({ rentOffers, onTitleClick, cities, city }) => {
   const offersCoordinates: LatLngTuple[] = rentOffers.map(({ location }) => {
     return [location.latitude, location.longitude];
   });
 
-  return <Fragment>
+  return <>
     <div style={{ display: `none` }}>
       <svg xmlns="http://www.w3.org/2000/svg">
         <symbol id="icon-arrow-select" viewBox="0 0 7 4">
@@ -96,7 +96,7 @@ const Main: FC<MainProps> = ({ rentOffers, onTitleClick, cities, city }) => {
         }
       </main>
     </div>
-  </Fragment>;
+  </>;
 };
 
 const mapStateToProps = (state) => ({

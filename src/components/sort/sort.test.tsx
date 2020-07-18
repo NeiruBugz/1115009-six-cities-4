@@ -1,11 +1,11 @@
-import React from 'react';
-import { create } from 'react-test-renderer';
+import * as React from 'react';
+import * as renderer from 'react-test-renderer';
 
 import { Sort } from './sort';
 
 describe(`Sort component unit tests`, () => {
   it(`should render Sort correctly`, () => {
-    const sort = create(
+    const sort = renderer.create(
       <Sort
         isListOpen={false}
         onSelectOpen={jest.fn()}

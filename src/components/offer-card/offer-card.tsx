@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import * as React from 'react';
 
 import {Offer} from "../../types/offer.types";
 
@@ -11,7 +11,7 @@ interface OfferCardProps {
   handleMouseLeave: () => void;
 }
 
-const OfferCard:FC<OfferCardProps> = (props: OfferCardProps) => {
+const OfferCard:React.FC<OfferCardProps> = (props: OfferCardProps) => {
   const {offer, index, isNearPlace, onTitleClick, handleMouseOver, handleMouseLeave} = props;
   const {title, price, preview_image, is_premium, type, rating} = offer;
 

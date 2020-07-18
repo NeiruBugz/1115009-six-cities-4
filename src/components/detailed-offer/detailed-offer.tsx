@@ -1,4 +1,4 @@
-import React, { FC, Fragment } from 'react';
+import * as React from 'react';
 
 import ReviewsList from '../reviews-list/reviews-list';
 import { Map } from '../map/map';
@@ -13,7 +13,7 @@ type DetailedOfferProps = {
   offers: Offer[];
 };
 
-const DetailedOffer: FC<DetailedOfferProps> = ({ offer, offers }) => {
+const DetailedOffer: React.FC<DetailedOfferProps> = ({ offer, offers }) => {
 
   const generateRandomInteger = (min, max) => {
     return Math.floor(min + Math.random() * (max + 1 - min));
@@ -39,7 +39,7 @@ const DetailedOffer: FC<DetailedOfferProps> = ({ offer, offers }) => {
   } = offer;
 
   return (
-    <Fragment>
+    <>
       <div style={{ display: `none` }}>
         <svg xmlns="http://www.w3.org/2000/svg">
           <symbol id="icon-arrow-select" viewBox="0 0 7 4">
@@ -344,7 +344,7 @@ const DetailedOffer: FC<DetailedOfferProps> = ({ offer, offers }) => {
           </div>
         </main>
       </div>
-    </Fragment>
+    </>
   );
 };
 
