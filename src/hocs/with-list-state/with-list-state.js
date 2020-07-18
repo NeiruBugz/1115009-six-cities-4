@@ -27,5 +27,3 @@ const withListState = (Component) => {
     }
   };
 };
-
-export default withListState;
