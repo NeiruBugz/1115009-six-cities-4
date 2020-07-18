@@ -1,7 +1,16 @@
 import React, {PureComponent} from 'react';
+import { Subtract } from "utility-types";
+
+type WithListStateState = {
+  isListOpen: boolean;
+}
 
 const withListState = (Component: React.Component | React.ReactNode | any) => {
-  return class WithListState extends PureComponent<{}, { isListOpen: boolean }> {
+  type P = React.ComponentProps<typeof Component>;
+
+  type T = Subtract<P, {}>;
+
+  return class WithListState extends PureComponent<T, P> {
     constructor(props) {
       super(props);
       this.state = {

@@ -1,15 +1,10 @@
 import React from 'react';
-import {string} from 'prop-types';
 import {create} from 'react-test-renderer';
 import withListState from './with-list-state';
 
-const MockedComponent = ({className}) => (
+const MockedComponent = ({className}: {className: string}) => (
   <div className={className}>test</div>
 );
-
-MockedComponent.propTypes = {
-  className: string.isRequired,
-};
 
 const MockedHOC = withListState(MockedComponent);
 
