@@ -1,9 +1,21 @@
-import React, {PureComponent, createRef} from 'react';
-import PropTypes from 'prop-types';
-import {icon, map, tileLayer, marker} from 'leaflet';
+import React, {PureComponent, createRef, RefObject} from 'react';
+import { icon, map, tileLayer, marker, Map as LeafletMap, Icon, Marker, LatLngTuple, MapOptions } from 'leaflet';
 import {connect} from 'react-redux';
 
-class Map extends PureComponent {
+type MapProps = {
+  coordinates: LatLngTuple[];
+  activeCard: number[];
+  city: LatLngTuple;
+  zoom: number;
+};
+
+class Map extends PureComponent<MapProps, {}> {
+  mapRef: RefObject<HTMLDivElement>;
+  map: LeafletMap;
+  _icon: Icon;
+  _activeIcon: Icon;
+  _markers: Marker[];
+
   constructor(props) {
     super(props);
     this.mapRef = createRef();
@@ -17,6 +29,7 @@ class Map extends PureComponent {
       iconSize: [27, 39],
     });
     this._markers = [];
+    console.log(props);
   }
 
   _createMarkers() {
@@ -27,6 +40,7 @@ class Map extends PureComponent {
         icon: JSON.stringify(coords) === JSON.stringify(activeCard) ? this._activeIcon : this._icon
       });
       mrk.addTo(this.map);
+      // @ts-ignore
       this._markers.push(marker);
     });
   }
@@ -44,9 +58,8 @@ class Map extends PureComponent {
 
     this.map = map(this.mapRef.current, {
       zoom,
-      city,
+      center: city,
       zoomControl: false,
-      marker: true,
     });
 
     this.map.setView(city, zoom);
@@ -67,13 +80,6 @@ class Map extends PureComponent {
     return <div ref={this.mapRef} style={{height: `100%`}} />;
   }
 }
-
-Map.propTypes = {
-  city: PropTypes.arrayOf(PropTypes.number).isRequired,
-  zoom: PropTypes.number.isRequired,
-  coordinates: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
-  activeCard: PropTypes.arrayOf(PropTypes.number).isRequired,
-};
 
 const mapStateToProps = (state) => ({
   activeCard: state.activeCard,

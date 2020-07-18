@@ -1,34 +1,47 @@
-import React, {Fragment} from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import React, { FC, Fragment } from 'react';
+import { connect } from 'react-redux';
 
 import OffersList from '../offers-list/offers-list';
-import Map from '../map/map.jsx';
+import Map from '../map/map';
 import CitiesList from '../cities-list/cities-list';
 import EmptyMain from '../empty-main/empty-main';
 import Sort from '../sort/sort';
 
-import {offerList} from '../../prop-types/offer.types';
 import withListState from '../../hocs/with-list-state/with-list-state';
+
+import { Offer } from "../../types/offer.types";
+import { City } from "../../types/cities.types";
+import { LatLngTuple } from "leaflet";
 
 const SortHOC = withListState(Sort);
 
-const Main = ({rentOffers, onTitleClick, cities, city}) => {
-  const offersCoordinates = rentOffers.map((offer) => offer.coordinates);
+type MainProps = {
+  rentOffers: Offer[];
+  onTitleClick: (idx: number) => void;
+  cities: City[];
+  city: City;
+};
+
+const Main: FC<MainProps> = ({ rentOffers, onTitleClick, cities, city }) => {
+  const offersCoordinates: LatLngTuple[] = rentOffers.map(({ location }) => {
+    return [location.latitude, location.longitude];
+  });
+
+  console.log(offersCoordinates);
 
   return <Fragment>
-    <div style={{display: `none`}}>
+    <div style={{ display: `none` }}>
       <svg xmlns="http://www.w3.org/2000/svg">
         <symbol id="icon-arrow-select" viewBox="0 0 7 4">
           <path fillRule="evenodd" clipRule="evenodd" d="M0 0l3.5 2.813L7 0v1.084L3.5 4 0 1.084V0z" />
         </symbol>
         <symbol id="icon-bookmark" viewBox="0 0 17 18">
           <path
-            d="M3.993 2.185l.017-.092V2c0-.554.449-1 .99-1h10c.522 0 .957.41.997.923l-2.736 14.59-4.814-2.407-.39-.195-.408.153L1.31 16.44 3.993 2.185z"/>
+            d="M3.993 2.185l.017-.092V2c0-.554.449-1 .99-1h10c.522 0 .957.41.997.923l-2.736 14.59-4.814-2.407-.39-.195-.408.153L1.31 16.44 3.993 2.185z" />
         </symbol>
         <symbol id="icon-star" viewBox="0 0 13 12">
           <path fillRule="evenodd" clipRule="evenodd"
-            d="M6.5 9.644L10.517 12 9.451 7.56 13 4.573l-4.674-.386L6.5 0 4.673 4.187 0 4.573 3.549 7.56 2.483 12 6.5 9.644z"/>
+                d="M6.5 9.644L10.517 12 9.451 7.56 13 4.573l-4.674-.386L6.5 0 4.673 4.187 0 4.573 3.549 7.56 2.483 12 6.5 9.644z" />
         </symbol>
       </svg>
     </div>
@@ -73,11 +86,11 @@ const Main = ({rentOffers, onTitleClick, cities, city}) => {
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
-                  {/* <Map*/}
-                  {/*  city={city.location}*/}
-                  {/*  zoom={12}*/}
-                  {/*  coordinates={offersCoordinates}*/}
-                  {/* />*/}
+                   <Map
+                    city={[city.location.latitude, city.location.longitude]}
+                    zoom={12}
+                    coordinates={offersCoordinates}
+                   />
                 </section>
               </div>
             </div>
@@ -88,22 +101,11 @@ const Main = ({rentOffers, onTitleClick, cities, city}) => {
   </Fragment>;
 };
 
-Main.propTypes = {
-  rentOffers: offerList.isRequired,
-  onTitleClick: PropTypes.func.isRequired,
-  cities: PropTypes.arrayOf(
-      PropTypes.shape({
-        location: PropTypes.arrayOf(PropTypes.number),
-        name: PropTypes.string
-      })).isRequired,
-  city: PropTypes.shape().isRequired,
-};
-
 const mapStateToProps = (state) => ({
   cities: state.cities,
   rentOffers: state.offers,
   city: state.city,
 });
 
-export {Main};
+export { Main };
 export default connect(mapStateToProps, null)(Main);

@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import {Map} from './map.jsx';
+import {Map} from './map.tsx';
 
 const mockMapProps = {
   city: [52.38333, 4.9],

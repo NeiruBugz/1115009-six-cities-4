@@ -6,7 +6,7 @@ interface OfferCardProps {
   offer: Offer;
   index: number;
   isNearPlace: boolean;
-  onTitleClick: (index: number) => {};
+  onTitleClick: (index: number) => void;
   handleMouseOver: (offer: Offer) => void;
   handleMouseLeave: () => void;
 }

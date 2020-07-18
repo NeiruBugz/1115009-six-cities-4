@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import {Provider} from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-import Main from './main.jsx';
+import Main from './main.tsx';
 
 import {offers} from '../../mocks/offers';
 import {citiesWithCoordinates} from '../../mocks/cities';

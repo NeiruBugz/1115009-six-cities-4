@@ -1,22 +1,28 @@
 import React, { FC, Fragment } from 'react';
 
 import ReviewsList from '../reviews-list/reviews-list';
-import {Map} from '../map/map.jsx';
-import {OffersList} from '../offers-list/offers-list';
+import { Map } from '../map/map';
+import { OffersList } from '../offers-list/offers-list';
 
-import {reviews} from '../../mocks/reviews';
-import {offers} from '../../mocks/offers';
+import { reviews } from '../../mocks/reviews';
 import { Offer } from "../../types/offer.types";
+import { LatLngTuple } from "leaflet";
 
 type DetailedOfferProps = {
   offer: Offer;
+  offers: Offer[];
 };
 
-const DetailedOffer: FC<DetailedOfferProps> = ({offer}) => {
+const DetailedOffer: FC<DetailedOfferProps> = ({ offer, offers }) => {
 
   const generateRandomInteger = (min, max) => {
     return Math.floor(min + Math.random() * (max + 1 - min));
   };
+
+  const filteredCoordinates: LatLngTuple[] = offers
+    .filter(({ location }) => JSON.stringify([location.latitude, location.longitude]) !== JSON.stringify([offer.location.latitude, offer.location.longitude]))
+    .map(({ location }) => [location.latitude, location.longitude]);
+
 
   const {
     title,
@@ -34,18 +40,18 @@ const DetailedOffer: FC<DetailedOfferProps> = ({offer}) => {
 
   return (
     <Fragment>
-      <div style={{display: `none`}}>
+      <div style={{ display: `none` }}>
         <svg xmlns="http://www.w3.org/2000/svg">
           <symbol id="icon-arrow-select" viewBox="0 0 7 4">
-            <path fillRule="evenodd" clipRule="evenodd" d="M0 0l3.5 2.813L7 0v1.084L3.5 4 0 1.084V0z"/>
+            <path fillRule="evenodd" clipRule="evenodd" d="M0 0l3.5 2.813L7 0v1.084L3.5 4 0 1.084V0z" />
           </symbol>
           <symbol id="icon-bookmark" viewBox="0 0 17 18">
             <path
-              d="M3.993 2.185l.017-.092V2c0-.554.449-1 .99-1h10c.522 0 .957.41.997.923l-2.736 14.59-4.814-2.407-.39-.195-.408.153L1.31 16.44 3.993 2.185z"/>
+              d="M3.993 2.185l.017-.092V2c0-.554.449-1 .99-1h10c.522 0 .957.41.997.923l-2.736 14.59-4.814-2.407-.39-.195-.408.153L1.31 16.44 3.993 2.185z" />
           </symbol>
           <symbol id="icon-star" viewBox="0 0 13 12">
             <path fillRule="evenodd" clipRule="evenodd"
-                  d="M6.5 9.644L10.517 12 9.451 7.56 13 4.573l-4.674-.386L6.5 0 4.673 4.187 0 4.573 3.549 7.56 2.483 12 6.5 9.644z"/>
+                  d="M6.5 9.644L10.517 12 9.451 7.56 13 4.573l-4.674-.386L6.5 0 4.673 4.187 0 4.573 3.549 7.56 2.483 12 6.5 9.644z" />
           </symbol>
         </svg>
       </div>
@@ -96,14 +102,14 @@ const DetailedOffer: FC<DetailedOfferProps> = ({offer}) => {
                   </h1>
                   <button className="property__bookmark-button button" type="button">
                     <svg className="property__bookmark-icon" width="31" height="33">
-                      <use xlinkHref="#icon-bookmark"/>
+                      <use xlinkHref="#icon-bookmark" />
                     </svg>
                     <span className="visually-hidden">To bookmarks</span>
                   </button>
                 </div>
                 <div className="property__rating rating">
                   <div className="property__stars rating__stars">
-                    <span style={{width: `${rating}%`}}/>
+                    <span style={{ width: `${rating}%` }} />
                     <span className="visually-hidden">Rating</span>
                   </div>
                   <span className="property__rating-value rating__value">{rating}</span>
@@ -134,7 +140,8 @@ const DetailedOffer: FC<DetailedOfferProps> = ({offer}) => {
                 <div className="property__host">
                   <h2 className="property__host-title">Meet the host</h2>
                   <div className="property__host-user user">
-                    <div className={`property__avatar-wrapper ${host.is_pro ? `property__avatar-wrapper--pro` : `` } user__avatar-wrapper`}>
+                    <div
+                      className={`property__avatar-wrapper ${host.is_pro ? `property__avatar-wrapper--pro` : ``} user__avatar-wrapper`}>
                       <img className="property__avatar user__avatar" src={host.avatar_url} width="74"
                            height="74"
                            alt="Host avatar" />
@@ -158,7 +165,7 @@ const DetailedOffer: FC<DetailedOfferProps> = ({offer}) => {
                              type="radio" />
                       <label htmlFor="5-stars" className="reviews__rating-label form__rating-label" title="perfect">
                         <svg className="form__star-image" width="37" height="33">
-                          <use xlinkHref="#icon-star"/>
+                          <use xlinkHref="#icon-star" />
                         </svg>
                       </label>
 
@@ -166,7 +173,7 @@ const DetailedOffer: FC<DetailedOfferProps> = ({offer}) => {
                              type="radio" />
                       <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">
                         <svg className="form__star-image" width="37" height="33">
-                          <use xlinkHref="#icon-star"/>
+                          <use xlinkHref="#icon-star" />
                         </svg>
                       </label>
 
@@ -174,7 +181,7 @@ const DetailedOffer: FC<DetailedOfferProps> = ({offer}) => {
                              type="radio" />
                       <label htmlFor="3-stars" className="reviews__rating-label form__rating-label" title="not bad">
                         <svg className="form__star-image" width="37" height="33">
-                          <use xlinkHref="#icon-star"/>
+                          <use xlinkHref="#icon-star" />
                         </svg>
                       </label>
 
@@ -182,7 +189,7 @@ const DetailedOffer: FC<DetailedOfferProps> = ({offer}) => {
                              type="radio" />
                       <label htmlFor="2-stars" className="reviews__rating-label form__rating-label" title="badly">
                         <svg className="form__star-image" width="37" height="33">
-                          <use xlinkHref="#icon-star"/>
+                          <use xlinkHref="#icon-star" />
                         </svg>
                       </label>
 
@@ -191,40 +198,32 @@ const DetailedOffer: FC<DetailedOfferProps> = ({offer}) => {
                       <label htmlFor="1-star" className="reviews__rating-label form__rating-label"
                              title="terribly">
                         <svg className="form__star-image" width="37" height="33">
-                          <use xlinkHref="#icon-star"/>
+                          <use xlinkHref="#icon-star" />
                         </svg>
                       </label>
                     </div>
                     <textarea className="reviews__textarea form__textarea" id="review" name="review"
-                              placeholder="Tell how was your stay, what you like and what can be improved"/>
+                              placeholder="Tell how was your stay, what you like and what can be improved" />
                     <div className="reviews__button-wrapper">
                       <p className="reviews__help">
                         To submit review please make sure to set <span className="reviews__star">rating</span> and
                         describe
                         your stay with at least <b className="reviews__text-amount">50 characters</b>.
                       </p>
-                      <button className="reviews__submit form__submit button" type="submit" disabled={false}>Submit</button>
+                      <button className="reviews__submit form__submit button" type="submit" disabled={false}>Submit
+                      </button>
                     </div>
                   </form>
                 </section>
               </div>
             </div>
             <section className="property__map map">
-              {/*<Map*/}
-              {/*  city={[52.38333, 4.9]}*/}
-              {/*  coordinates={[*/}
-              {/*    [52.3909553943508, 4.85309666406198],*/}
-              {/*    [52.369553943508, 4.85309666406198],*/}
-              {/*    [52.3909553943508, 4.929309666406198],*/}
-              {/*    [52.3809553943508, 4.939309666406198]*/}
-              {/*  ].filter((coord) =>*/}
-              {/*    JSON*/}
-              {/*      .stringify(coord) !== JSON*/}
-              {/*      .stringify([offer.location.latitude, offer.location.longitude])*/}
-              {/*  )}*/}
-              {/*  zoom={12}*/}
-              {/*  activeCard={[0, 0]}*/}
-              {/*/>*/}
+              <Map
+                city={[52.38333, 4.9]}
+                coordinates={filteredCoordinates}
+                zoom={12}
+                activeCard={[0, 0]}
+              />
             </section>
           </section>
           <div className="container">
@@ -237,7 +236,8 @@ const DetailedOffer: FC<DetailedOfferProps> = ({offer}) => {
                       .filter((restOffer) => restOffer.location !== offer.location)
                       .slice(0, 3)
                   }
-                  onSetActiveCard={() => {}}
+                  onSetActiveCard={() => {
+                  }}
                   isNearPlaces
                 />
                 {/* <article className="near-places__card place-card">*/}

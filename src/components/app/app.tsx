@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import Main from '../main/main.jsx';
+import Main from '../main/main';
 import DetailedOffer from '../detailed-offer/detailed-offer';
 
 import { Offer } from "../../types/offer.types";
@@ -40,13 +40,14 @@ class App extends React.PureComponent<AppProps, AppState> {
     }
 
     if (offers[activeOffer]) {
-      return <DetailedOffer offer={offers[activeOffer]} />;
+      return <DetailedOffer offer={offers[activeOffer]} offers={offers} />;
     }
 
     return null;
   }
 
   render() {
+    const { offers } = this.props;
     return (
       <BrowserRouter>
         <Switch>
@@ -54,7 +55,7 @@ class App extends React.PureComponent<AppProps, AppState> {
             {this._renderApp()}
           </Route>
           <Route exact path="/dev-offer">
-            <DetailedOffer offer={this.props.offers[0]} />
+            <DetailedOffer offer={offers[0]} offers={offers} />
           </Route>
         </Switch>
       </BrowserRouter>
