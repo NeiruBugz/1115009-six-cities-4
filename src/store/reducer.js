@@ -12,7 +12,7 @@ const initialState = {
     {location: [53.551086, 9.993682], name: `Hamburg`},
     {location: [51.2217, 6.7762], name: `Dusseldorf`},
   ],
-  offers: mockOffers.filter((offer) => offer.city === `Amsterdam`),
+  offers: mockOffers.filter((offer) => offer.city.name === `Amsterdam`),
   sort: `Popular`,
   activeCard: [0, 0],
 };
