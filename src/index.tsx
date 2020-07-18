@@ -8,23 +8,14 @@ import { reducer } from './store/reducer';
 
 import App from './components/app/app';
 
-import { offers } from './mocks/offers';
-import { cities } from './mocks/cities';
-
 const store = createStore(
   reducer,
   composeWithDevTools(),
 );
 
-const baseSettings = {
-  rentOffers: offers,
-  rentOffersCount: offers.length,
-  cities,
-};
-
 ReactDOM.render(
   <Provider store={store}>
-    <App settings={baseSettings} />
+    <App />
   </Provider>,
   document.querySelector(`#root`)
 );
