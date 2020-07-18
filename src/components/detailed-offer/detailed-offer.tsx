@@ -1,8 +1,8 @@
 import React, { FC, Fragment } from 'react';
 
-import ReviewsList from '../reviews-list/reviews-list.jsx';
+import ReviewsList from '../reviews-list/reviews-list';
 import {Map} from '../map/map.jsx';
-import {OffersList} from '../offers-list/offers-list.jsx';
+import {OffersList} from '../offers-list/offers-list';
 
 import {reviews} from '../../mocks/reviews';
 import {offers} from '../../mocks/offers';
@@ -210,21 +210,21 @@ const DetailedOffer: FC<DetailedOfferProps> = ({offer}) => {
               </div>
             </div>
             <section className="property__map map">
-              <Map
-                city={[52.38333, 4.9]}
-                coordinates={[
-                  [52.3909553943508, 4.85309666406198],
-                  [52.369553943508, 4.85309666406198],
-                  [52.3909553943508, 4.929309666406198],
-                  [52.3809553943508, 4.939309666406198]
-                ].filter((coord) =>
-                  JSON
-                    .stringify(coord) !== JSON
-                    .stringify([offer.location.latitude, offer.location.longitude])
-                )}
-                zoom={12}
-                activeCard={[0, 0]}
-              />
+              {/*<Map*/}
+              {/*  city={[52.38333, 4.9]}*/}
+              {/*  coordinates={[*/}
+              {/*    [52.3909553943508, 4.85309666406198],*/}
+              {/*    [52.369553943508, 4.85309666406198],*/}
+              {/*    [52.3909553943508, 4.929309666406198],*/}
+              {/*    [52.3809553943508, 4.939309666406198]*/}
+              {/*  ].filter((coord) =>*/}
+              {/*    JSON*/}
+              {/*      .stringify(coord) !== JSON*/}
+              {/*      .stringify([offer.location.latitude, offer.location.longitude])*/}
+              {/*  )}*/}
+              {/*  zoom={12}*/}
+              {/*  activeCard={[0, 0]}*/}
+              {/*/>*/}
             </section>
           </section>
           <div className="container">

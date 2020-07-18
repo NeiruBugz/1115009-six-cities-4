@@ -18,6 +18,7 @@ interface CitiesListProps {
 const CitiesList: FC<CitiesListProps> = (
   { selectedCity, cities, onCityChange, onOffersChange }
 ) => {
+
   const handleCityClick = (city: string) => {
     const cityCoordinates = cities
       .filter(({ name }) => name === city)[0].location;

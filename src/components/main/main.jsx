@@ -6,7 +6,7 @@ import OffersList from '../offers-list/offers-list';
 import Map from '../map/map.jsx';
 import CitiesList from '../cities-list/cities-list';
 import EmptyMain from '../empty-main/empty-main';
-import Sort from '../sort/sort.jsx';
+import Sort from '../sort/sort';
 
 import {offerList} from '../../prop-types/offer.types';
 import withListState from '../../hocs/with-list-state/with-list-state';
@@ -73,11 +73,11 @@ const Main = ({rentOffers, onTitleClick, cities, city}) => {
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
-                  <Map
-                    city={city.location}
-                    zoom={12}
-                    coordinates={offersCoordinates}
-                  />
+                  {/* <Map*/}
+                  {/*  city={city.location}*/}
+                  {/*  zoom={12}*/}
+                  {/*  coordinates={offersCoordinates}*/}
+                  {/* />*/}
                 </section>
               </div>
             </div>
