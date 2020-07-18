@@ -27,8 +27,6 @@ const Main: FC<MainProps> = ({ rentOffers, onTitleClick, cities, city }) => {
     return [location.latitude, location.longitude];
   });
 
-  console.log(offersCoordinates);
-
   return <Fragment>
     <div style={{ display: `none` }}>
       <svg xmlns="http://www.w3.org/2000/svg">
@@ -86,11 +84,11 @@ const Main: FC<MainProps> = ({ rentOffers, onTitleClick, cities, city }) => {
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
-                   <Map
+                  <Map
                     city={[city.location.latitude, city.location.longitude]}
                     zoom={12}
                     coordinates={offersCoordinates}
-                   />
+                  />
                 </section>
               </div>
             </div>

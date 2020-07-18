@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 
-import App from './app';
+import { App } from './app';
 
 import { offers } from '../../mocks/offers';
 import { citiesWithCoordinates } from '../../mocks/cities';
@@ -21,7 +21,7 @@ describe(`App renders correctly`, () => {
     });
     const tree = renderer.create(
       <Provider store={store}>
-        <App />
+        <App offers={offers} />
       </Provider>
     ).toJSON();
     expect(tree).toMatchSnapshot();

@@ -1,7 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import {Map} from './map.tsx';
+import { Map } from './map';
+import { LatLngTuple } from "leaflet";
 
 const mockMapProps = {
   city: [52.38333, 4.9],
@@ -16,9 +17,9 @@ const mockMapProps = {
 
 describe(`Map renders correctly`, () => {
   it(`should `, () => {
-    const {city, zoom, coordinates} = mockMapProps;
+    const { city, zoom, coordinates } = mockMapProps;
     const map = renderer.create(
-        <Map city={city} zoom={zoom} coordinates={coordinates} activeCard={[0, 0]}/>
+      <Map city={city as LatLngTuple} zoom={zoom} coordinates={coordinates} activeCard={[0, 0]} />
     ).toJSON();
 
     expect(map).toMatchSnapshot();

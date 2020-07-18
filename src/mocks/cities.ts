@@ -1,3 +1,5 @@
+import { City } from "../types/cities.types";
+
 export const cities = [
   `Paris`,
   `Cologne`,
@@ -7,7 +9,7 @@ export const cities = [
   `Dusseldorf`
 ];
 
-export const citiesWithCoordinates = [
+export const citiesWithCoordinates: City[] = [
   { location: { latitude: 0, longitude: 0 }, name: `Paris` },
   { location: { latitude: 0, longitude: 0 }, name: `Cologne` },
   { location: { latitude: 0, longitude: 0 }, name: `Brussels` },

@@ -34,7 +34,7 @@ export const reviews: ReviewType[] = [
       avatar_url: `img/avatar-max.jpg`,
       is_pro: false,
       id: 0,
-      name: `Mellany`
+      name: `Melany`
     }
   }
 ];

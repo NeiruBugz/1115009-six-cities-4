@@ -1,17 +1,18 @@
 import React from 'react';
-import Enzyme, {shallow} from 'enzyme';
+import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
-import OfferCard from './offer-card.jsx';
+import OfferCard from './offer-card';
 
-import {offers} from '../../mocks/offers';
+import { offers } from '../../mocks/offers';
 
 Enzyme.configure({
   adapter: new Adapter(),
 });
 
 const mockedEvent = {
-  preventDefault() {},
+  preventDefault() {
+  },
 };
 
 describe(`OfferCard e2e test`, () => {
@@ -21,13 +22,14 @@ describe(`OfferCard e2e test`, () => {
     const [first] = offers;
 
     const offerCard = shallow(
-        <OfferCard
-          offer={first}
-          handleMouseLeave={jest.fn()}
-          handleMouseOver={onMouseEnter}
-          index={1}
-          onTitleClick={jest.fn()}
-        />
+      <OfferCard
+        offer={first}
+        handleMouseLeave={jest.fn()}
+        handleMouseOver={onMouseEnter}
+        index={1}
+        onTitleClick={jest.fn()}
+        isNearPlace={false}
+      />
     );
 
     const cardActiveElement = offerCard.find(`.place-card`);
@@ -45,13 +47,14 @@ describe(`OfferCard e2e test`, () => {
     const [first] = offers;
 
     const offerCard = shallow(
-        <OfferCard
-          onTitleClick={mockTitleClick}
-          offer={first}
-          handleMouseOver={jest.fn()}
-          index={offerIndex}
-          handleMouseLeave={jest.fn()}
-        />
+      <OfferCard
+        onTitleClick={mockTitleClick}
+        offer={first}
+        handleMouseOver={jest.fn()}
+        index={offerIndex}
+        handleMouseLeave={jest.fn()}
+        isNearPlace={false}
+      />
     );
 
     const offerTitle = offerCard.find(`.place-card__name a`);

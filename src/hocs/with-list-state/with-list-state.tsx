@@ -1,10 +1,6 @@
 import React, {PureComponent} from 'react';
 import { Subtract } from "utility-types";
 
-type WithListStateState = {
-  isListOpen: boolean;
-}
-
 const withListState = (Component: React.Component | React.ReactNode | any) => {
   type P = React.ComponentProps<typeof Component>;
 

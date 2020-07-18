@@ -1,15 +1,25 @@
 import React, {PureComponent, createRef, RefObject} from 'react';
-import { icon, map, tileLayer, marker, Map as LeafletMap, Icon, Marker, LatLngTuple, MapOptions } from 'leaflet';
+import {
+  icon,
+  map,
+  tileLayer,
+  marker,
+  Map as LeafletMap,
+  Icon,
+  Marker,
+  LatLngTuple,
+  LatLngExpression
+} from 'leaflet';
 import {connect} from 'react-redux';
 
 type MapProps = {
-  coordinates: LatLngTuple[];
+  coordinates: LatLngTuple[] | number[][];
   activeCard: number[];
-  city: LatLngTuple;
+  city: LatLngTuple | LatLngExpression;
   zoom: number;
 };
 
-class Map extends PureComponent<MapProps, {}> {
+class Map extends PureComponent<MapProps> {
   mapRef: RefObject<HTMLDivElement>;
   map: LeafletMap;
   _icon: Icon;
@@ -29,7 +39,6 @@ class Map extends PureComponent<MapProps, {}> {
       iconSize: [27, 39],
     });
     this._markers = [];
-    console.log(props);
   }
 
   _createMarkers() {
