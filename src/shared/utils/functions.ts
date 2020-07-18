@@ -1,6 +1,7 @@
 import {SORT_TYPES} from './consts';
+import { Offer } from "../../types/offer.types";
 
-export const sortOffers = (offers, sortType) => {
+export const sortOffers = (offers: Offer[], sortType: string) => {
   let newOffers = [...offers];
   switch (sortType) {
     case SORT_TYPES.TOP_RATED_FIRST:
