@@ -1,12 +1,12 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 
-import {configure, mount} from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import * as Enzyme from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
 
 import withListState from './with-list-state';
 
-configure({adapter: new Adapter()});
+Enzyme.configure({adapter: new Adapter()});
 
 const MockedComponent = ({onSelectOpen}) => (
   <div>
@@ -22,9 +22,11 @@ const MockedHOC = withListState(MockedComponent);
 
 describe(`withListState e2e tests`, () => {
   it(`should change MockedHOC state when clicked`, () => {
-    const hoc = mount(
+    const hoc = Enzyme.mount(
         <MockedHOC/>
     );
+
+    console.log(hoc);
 
     expect(hoc.state().isListOpen).toBeFalsy();
 

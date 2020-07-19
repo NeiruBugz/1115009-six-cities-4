@@ -19,3 +19,4 @@ dist
 # Tests
 
 coverage/*
+src/coverage/*

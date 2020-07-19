@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
-import DetailedOffer from './detailed-offer.jsx';
+import DetailedOffer from './detailed-offer';
 
 import {offers} from '../../mocks/offers';
 

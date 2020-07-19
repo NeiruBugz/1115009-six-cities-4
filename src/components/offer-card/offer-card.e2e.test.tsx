@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Enzyme, { shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import * as Enzyme from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
 
 import OfferCard from './offer-card';
 
@@ -21,7 +21,7 @@ describe(`OfferCard e2e test`, () => {
 
     const [first] = offers;
 
-    const offerCard = shallow(
+    const offerCard = Enzyme.shallow(
       <OfferCard
         offer={first}
         handleMouseLeave={jest.fn()}
@@ -46,7 +46,7 @@ describe(`OfferCard e2e test`, () => {
 
     const [first] = offers;
 
-    const offerCard = shallow(
+    const offerCard = Enzyme.shallow(
       <OfferCard
         onTitleClick={mockTitleClick}
         offer={first}

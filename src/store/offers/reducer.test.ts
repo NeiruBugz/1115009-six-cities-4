@@ -1,6 +1,6 @@
-import { reducer, setOffers, setSortType, setCity, setActiveCard } from './offers/reducer';
-import { offers as mockOffers, offers as testOffers } from '../mocks/offers';
-import { SORT_TYPES } from '../shared/utils/consts';
+import { reducer, setOffers, setSortType, setCity, setActiveCard } from './reducer';
+import { offers as mockOffers, offers as testOffers } from '../../mocks/offers';
+import { SORT_TYPES } from '../../shared/utils/consts';
 
 const mockedState = {
   city:
@@ -28,7 +28,10 @@ describe(`reducer unit tests`, () => {
       cities: mockedState.cities,
       offers: mockedState.offers,
       sort: `Popular`,
-      activeCard: [0, 0],
+      activeCard: {
+        latitude: 0,
+        longitude: 0,
+      },
     });
   });
 
@@ -41,7 +44,10 @@ describe(`reducer unit tests`, () => {
       cities: mockedState.cities,
       offers: mockedState.offers,
       sort: `Popular`,
-      activeCard: [0, 0],
+      activeCard: {
+        latitude: 0,
+        longitude: 0,
+      },
     });
   });
 
@@ -55,7 +61,10 @@ describe(`reducer unit tests`, () => {
       cities: mockedState.cities,
       offers: mockedState.offers,
       sort: `Popular`,
-      activeCard: [0, 0],
+      activeCard: {
+        latitude: 0,
+        longitude: 0,
+      },
     });
   });
 
@@ -67,14 +76,20 @@ describe(`reducer unit tests`, () => {
     )).toEqual({
       city: mockedState.city,
       cities: mockedState.cities,
-      offers: mockedState.offers,
+      offers: mockedState.offers.sort((a, b) => b.rating - a.rating),
       sort: `Top rated first`,
-      activeCard: [0, 0],
+      activeCard: {
+        latitude: 0,
+        longitude: 0,
+      },
     });
   });
 
   it(`should return state with selected active card`, () => {
-    const activeCard = [52.3809553943508, 4.939309666406198];
+    const activeCard = {
+      latitude: 52.3809553943508,
+      longitude: 4.939309666406198,
+    };
     expect(reducer(
       mockedState,
       setActiveCard(activeCard)
@@ -83,7 +98,10 @@ describe(`reducer unit tests`, () => {
       cities: mockedState.cities,
       offers: mockedState.offers,
       sort: `Popular`,
-      activeCard: [52.3809553943508, 4.939309666406198],
+      activeCard: {
+        latitude: 52.3809553943508,
+        longitude: 4.939309666406198
+      },
     });
   });
 });
