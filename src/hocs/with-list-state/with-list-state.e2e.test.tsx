@@ -1,40 +1,28 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 
-import * as Enzyme from 'enzyme';
+import { configure, shallow } from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
 
 import withListState from './with-list-state';
 
-Enzyme.configure({adapter: new Adapter()});
+configure({ adapter: new Adapter() });
 
-const MockedComponent = ({onSelectOpen}) => (
+const MockedComponent = ({ onSelectOpen }: { onSelectOpen: () => void;}) => (
   <div>
-    <button type="button" onClick={onSelectOpen}/>
+    <button type="button" onClick={onSelectOpen} />
   </div>
 );
-
-MockedComponent.propTypes = {
-  onSelectOpen: PropTypes.func.isRequired,
-};
 
 const MockedHOC = withListState(MockedComponent);
 
 describe(`withListState e2e tests`, () => {
   it(`should change MockedHOC state when clicked`, () => {
-    const hoc = Enzyme.mount(
-        <MockedHOC/>
-    );
+    const hoc = shallow(<MockedHOC />);
 
-    console.log(hoc);
-
-    expect(hoc.state().isListOpen).toBeFalsy();
-
-    const openingButton = hoc.find(`button`);
-
-    openingButton.simulate(`click`);
-    expect(hoc.state().isListOpen).toBeTruthy();
-    openingButton.simulate(`click`);
-    expect(hoc.state().isListOpen).toBeFalsy();
+    expect(hoc.props().isListOpen).toEqual(false);
+    hoc.props().onSelectOpen();
+    expect(hoc.props().isListOpen).toEqual(true);
+    hoc.props().onSelectOpen();
+    expect(hoc.props().isListOpen).toEqual(false);
   });
 });
