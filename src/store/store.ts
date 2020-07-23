@@ -1,6 +1,9 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
+
 import { reducer as offers } from './offers/reducer';
-import { composeWithDevTools } from "redux-devtools-extension/index";
+import { createAPI } from "../shared/api";
 
 const rootReducer = {
   offers: offers,
@@ -8,4 +11,9 @@ const rootReducer = {
 
 const combinedReducers = combineReducers(rootReducer);
 
-export const store = createStore(combinedReducers, composeWithDevTools());
+const api = createAPI();
+
+export const store = createStore(
+  combinedReducers,
+  composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api))),
+);
