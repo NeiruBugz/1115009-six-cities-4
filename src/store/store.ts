@@ -3,10 +3,12 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
 
 import { reducer as offers } from './offers/reducer';
+import { reducer as data } from './data/reducer';
 import { createAPI } from "../shared/api";
 
 const rootReducer = {
   offers: offers,
+  data: data,
 };
 
 const combinedReducers = combineReducers(rootReducer);

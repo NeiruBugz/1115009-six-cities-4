@@ -14,6 +14,7 @@ const mockedState = {
     { location: { latitude: 51.2217, longitude: 6.7762 }, name: `Dusseldorf` },
   ],
   offers: mockOffers.filter((offer) => offer.city.name === `Amsterdam`),
+  serverOffers: [],
   sort: `Popular`,
   activeCard: {
     latitude: 0,

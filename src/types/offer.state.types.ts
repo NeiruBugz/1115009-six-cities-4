@@ -5,6 +5,7 @@ export type OfferState = {
   city: City;
   cities: City[];
   offers: Offer[];
+  serverOffers?: Offer[];
   sort: string;
   activeCard: {
     latitude: number,

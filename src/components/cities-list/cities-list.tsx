@@ -13,17 +13,18 @@ interface CitiesListProps {
   cities: City[];
   onCityChange: (city: City) => {};
   onOffersChange: (offers: Offer[]) => {};
+  offers?: Offer[]
 }
 
 const CitiesList: React.FC<CitiesListProps> = (
-  { selectedCity, cities, onCityChange, onOffersChange }
+  { selectedCity, cities, onCityChange, onOffersChange, offers }
 ) => {
 
   const handleCityClick = (city: string) => {
     const cityCoordinates = cities
       .filter(({ name }) => name === city)[0].location;
     onCityChange({ location: cityCoordinates, name: city });
-    onOffersChange(mockOffers.filter((offer: Offer) => offer.city.name === city));
+    onOffersChange(offers.filter((offer: Offer) => offer.city.name === city));
   }
 
   const listMarkup = cities.map((city, index) => {
@@ -48,7 +49,7 @@ const CitiesList: React.FC<CitiesListProps> = (
 }
 
 const mapStateToProps = (state) => ({
-  offers: state.offers.offers,
+  offers: state.offers.serverOffers,
 });
 
 const mapDispatchToProps = (dispatch) => ({

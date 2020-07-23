@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 import { Offer } from "../types/offer.types";
 
-const offers: Offer[] = [
+export const offers: Offer[] = [
   {
     id: 0,
     is_premium: true,
