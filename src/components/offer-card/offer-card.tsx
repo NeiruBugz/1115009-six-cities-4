@@ -11,7 +11,7 @@ interface OfferCardProps {
   handleMouseLeave: () => void;
 }
 
-const OfferCard:React.FC<OfferCardProps> = (props: OfferCardProps) => {
+const OfferCard: React.FC<OfferCardProps> = (props: OfferCardProps) => {
   const {offer, index, isNearPlace, onTitleClick, handleMouseOver, handleMouseLeave} = props;
   const {title, price, preview_image, is_premium, type, rating} = offer;
 
@@ -19,7 +19,7 @@ const OfferCard:React.FC<OfferCardProps> = (props: OfferCardProps) => {
   const handleTitleClick = (idx: number, evt: React.MouseEvent<HTMLAnchorElement>) => {
     evt.preventDefault();
     onTitleClick(idx);
-  }
+  };
 
   return (
     <article
@@ -69,6 +69,6 @@ const OfferCard:React.FC<OfferCardProps> = (props: OfferCardProps) => {
       </div>
     </article>
   );
-}
+};
 
 export default OfferCard;

@@ -1,4 +1,4 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios, {AxiosRequestConfig} from 'axios';
 
 const axiosInstanceOptions: AxiosRequestConfig = {
   baseURL: `https://4.react.pages.academy/six-cities`,
@@ -8,4 +8,4 @@ const axiosInstanceOptions: AxiosRequestConfig = {
 
 export const createAPI = (dispatch?) => {
   return axios.create(axiosInstanceOptions);
-}
+};

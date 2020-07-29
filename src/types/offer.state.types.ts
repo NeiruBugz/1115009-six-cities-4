@@ -1,5 +1,5 @@
-import { City } from "./cities.types";
-import { Offer } from "./offer.types";
+import {City} from "./cities.types";
+import {Offer} from "./offer.types";
 
 export type OfferState = {
   city: City;
@@ -8,7 +8,7 @@ export type OfferState = {
   serverOffers?: Offer[];
   sort: string;
   activeCard: {
-    latitude: number,
-    longitude: number,
+    latitude: number;
+    longitude: number;
   };
 };

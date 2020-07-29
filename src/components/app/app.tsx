@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 import Main from '../main/main';
 import DetailedOffer from '../detailed-offer/detailed-offer';
 
-import { Offer } from "../../types/offer.types";
+import {Offer} from "../../types/offer.types";
 
 type AppProps = {
-  offers: Offer[]
+  offers: Offer[];
 };
 
 type AppState = {
@@ -47,7 +47,7 @@ class App extends React.PureComponent<AppProps, AppState> {
   }
 
   render() {
-    const { offers } = this.props;
+    const {offers} = this.props;
     return (
       <BrowserRouter>
         <Switch>
@@ -66,6 +66,6 @@ const mapStateToProps = (state) => ({
   offers: state.offers.offers,
 });
 
-export { App };
+export {App};
 
 export default connect(mapStateToProps, null)(App);
