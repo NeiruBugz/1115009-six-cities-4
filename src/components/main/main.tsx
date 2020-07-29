@@ -85,7 +85,6 @@ const Main: React.FC<MainProps> = ({rentOffers, onTitleClick, cities, city}) => 
               <div className="cities__right-section">
                 <section className="cities__map map">
                   <Map
-                    city={[city.location.latitude, city.location.longitude]}
                     zoom={12}
                     coordinates={offersCoordinates}
                   />

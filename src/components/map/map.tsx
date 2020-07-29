@@ -6,7 +6,6 @@ import {
   marker,
   Map as LeafletMap,
   Icon,
-  Marker,
   LatLngTuple,
   LatLngExpression
 } from 'leaflet';
@@ -15,16 +14,16 @@ import {connect} from 'react-redux';
 type MapProps = {
   coordinates: LatLngTuple[] | number[][];
   activeCard: number[];
-  city: LatLngTuple | LatLngExpression;
+  city: LatLngTuple | LatLngExpression | number[];
   zoom: number;
 };
 
-class Map extends React.PureComponent<MapProps> {
+class Map extends React.Component<MapProps, {}> {
   mapRef: React.RefObject<HTMLDivElement>;
   map: LeafletMap;
   _icon: Icon;
   _activeIcon: Icon;
-  _markers: Marker[];
+  _markers: any[];
 
   constructor(props) {
     super(props);
@@ -44,12 +43,11 @@ class Map extends React.PureComponent<MapProps> {
   _createMarkers() {
     const {coordinates, activeCard} = this.props;
 
-    coordinates.forEach((coords) => {
+    coordinates.forEach((coords: LatLngExpression) => {
       const mrk = marker(coords, {
         icon: JSON.stringify(coords) === JSON.stringify(activeCard) ? this._activeIcon : this._icon
       });
       mrk.addTo(this.map);
-      // @ts-ignore
       this._markers.push(marker);
     });
   }
@@ -67,11 +65,11 @@ class Map extends React.PureComponent<MapProps> {
 
     this.map = map(this.mapRef.current, {
       zoom,
-      center: city,
+      center: city as LatLngExpression,
       zoomControl: false,
     });
 
-    this.map.setView(city, zoom);
+    this.map.setView(city as LatLngExpression, zoom);
 
     tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
       attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
@@ -91,6 +89,7 @@ class Map extends React.PureComponent<MapProps> {
 }
 
 const mapStateToProps = (state) => ({
+  city: [state.offers.city.location.latitude, state.offers.city.location.longitude],
   activeCard: state.offers.activeCard,
 });
 
