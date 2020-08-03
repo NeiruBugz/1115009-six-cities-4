@@ -10,15 +10,16 @@ import {
   LatLngExpression
 } from 'leaflet';
 import {connect} from 'react-redux';
+import {City} from "../../types/cities.types";
 
 type MapProps = {
   coordinates: LatLngTuple[] | number[][];
   activeCard: number[];
-  city: LatLngTuple | LatLngExpression | number[];
+  city: City;
   zoom: number;
 };
 
-class Map extends React.Component<MapProps, {}> {
+class Map extends React.Component<MapProps> {
   mapRef: React.RefObject<HTMLDivElement>;
   map: LeafletMap;
   _icon: Icon;
@@ -63,13 +64,15 @@ class Map extends React.Component<MapProps, {}> {
 
     const {city, zoom} = this.props;
 
+    const {location} = city;
+
     this.map = map(this.mapRef.current, {
       zoom,
-      center: city as LatLngExpression,
+      center: [location.latitude, location.longitude],
       zoomControl: false,
     });
 
-    this.map.setView(city as LatLngExpression, zoom);
+    this.map.setView([location.latitude, location.longitude], zoom);
 
     tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
       attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
@@ -83,13 +86,16 @@ class Map extends React.Component<MapProps, {}> {
     this._createMarkers();
   }
 
+  shouldComponentUpdate(nextProps: Readonly<MapProps>): boolean {
+    return this.props.city.name !== nextProps.city.name;
+  }
+
   render() {
     return <div ref={this.mapRef} style={{height: `100%`}} />;
   }
 }
 
 const mapStateToProps = (state) => ({
-  city: [state.offers.city.location.latitude, state.offers.city.location.longitude],
   activeCard: state.offers.activeCard,
 });
 

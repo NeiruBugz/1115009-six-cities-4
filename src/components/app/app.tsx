@@ -6,9 +6,12 @@ import Main from '../main/main';
 import DetailedOffer from '../detailed-offer/detailed-offer';
 
 import {Offer} from "../../types/offer.types";
+import EmptyMain from "../empty-main/empty-main";
+import {Loader} from "../loader/loader";
 
 type AppProps = {
   offers: Offer[];
+  isLoading: boolean;
 };
 
 type AppState = {
@@ -47,12 +50,12 @@ class App extends React.PureComponent<AppProps, AppState> {
   }
 
   render() {
-    const {offers} = this.props;
+    const {offers, isLoading} = this.props;
     return (
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            {this._renderApp()}
+            {!isLoading ? this._renderApp() : <Loader />}
           </Route>
           <Route exact path="/dev-offer">
             <DetailedOffer offer={offers[0]} offers={offers} />
@@ -64,6 +67,7 @@ class App extends React.PureComponent<AppProps, AppState> {
 }
 const mapStateToProps = (state) => ({
   offers: state.offers.offers,
+  isLoading: state.data.isLoading,
 });
 
 export {App};

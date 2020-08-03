@@ -219,7 +219,7 @@ const DetailedOffer: React.FC<DetailedOfferProps> = ({offer, offers}) => {
             </div>
             <section className="property__map map">
               <Map
-                city={[52.38333, 4.9]}
+                city={offer.city}
                 coordinates={filteredCoordinates}
                 zoom={12}
                 activeCard={[0, 0]}

@@ -26,7 +26,7 @@ describe(`App renders correctly`, () => {
     });
     const tree = renderer.create(
         <Provider store={store}>
-          <App offers={offers} />
+          <App offers={offers} isLoading={false} />
         </Provider>
     ).toJSON();
     expect(tree).toMatchSnapshot();
