@@ -5,7 +5,7 @@ const initialState = {
   isLoading: false,
 };
 
-const ActionTypes = {
+export const ActionTypes = {
   SET_IS_FETCHING: `SET_IS_FETCHING`,
 };
 
@@ -17,8 +17,9 @@ export const setLoading = (payload: boolean) => ({
 export const fetchOffersThunk = () => (dispatch, getState, api) => {
   return api.get(`/hotels`)
     .then(({data}: { data: Offer[] }) => {
+      const {name: city} = data[0].city;
       dispatch(setLoading(true));
-      dispatch(setOffers(data.filter((offer) => offer.city.name === getState().offers.city.name)));
+      dispatch(setOffers(data.filter((offer) => offer.city.name === city)));
       dispatch(setServerOffers(data));
     })
     .then(() => dispatch(setLoading(false)));
