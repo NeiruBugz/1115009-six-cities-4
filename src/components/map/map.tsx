@@ -91,6 +91,12 @@ class Map extends React.Component<MapProps> {
   }
 
   render() {
+    if (this.map) {
+      const {city, zoom} = this.props;
+      const {location} = city;
+      
+      this.map.setView([location.latitude, location.longitude], zoom);
+    }
     return <div ref={this.mapRef} style={{height: `100%`}} />;
   }
 }
