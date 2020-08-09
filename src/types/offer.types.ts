@@ -1,5 +1,5 @@
-import { City } from "./cities.types";
-import { User } from "./user.types";
+import {City} from "./cities.types";
+import {User} from "./user.types";
 
 export type Offer = {
   bedrooms: number;

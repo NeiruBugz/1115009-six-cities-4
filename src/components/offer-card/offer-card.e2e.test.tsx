@@ -4,7 +4,7 @@ import * as Adapter from 'enzyme-adapter-react-16';
 
 import OfferCard from './offer-card';
 
-import { offers } from '../../mocks/offers';
+import {offers} from '../../mocks/offers';
 
 Enzyme.configure({
   adapter: new Adapter(),
@@ -22,14 +22,14 @@ describe(`OfferCard e2e test`, () => {
     const [first] = offers;
 
     const offerCard = Enzyme.shallow(
-      <OfferCard
-        offer={first}
-        handleMouseLeave={jest.fn()}
-        handleMouseOver={onMouseEnter}
-        index={1}
-        onTitleClick={jest.fn()}
-        isNearPlace={false}
-      />
+        <OfferCard
+          offer={first}
+          handleMouseLeave={jest.fn()}
+          handleMouseOver={onMouseEnter}
+          index={1}
+          onTitleClick={jest.fn()}
+          isNearPlace={false}
+        />
     );
 
     const cardActiveElement = offerCard.find(`.place-card`);
@@ -47,14 +47,14 @@ describe(`OfferCard e2e test`, () => {
     const [first] = offers;
 
     const offerCard = Enzyme.shallow(
-      <OfferCard
-        onTitleClick={mockTitleClick}
-        offer={first}
-        handleMouseOver={jest.fn()}
-        index={offerIndex}
-        handleMouseLeave={jest.fn()}
-        isNearPlace={false}
-      />
+        <OfferCard
+          onTitleClick={mockTitleClick}
+          offer={first}
+          handleMouseOver={jest.fn()}
+          index={offerIndex}
+          handleMouseLeave={jest.fn()}
+          isNearPlace={false}
+        />
     );
 
     const offerTitle = offerCard.find(`.place-card__name a`);

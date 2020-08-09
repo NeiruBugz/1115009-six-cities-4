@@ -1,27 +1,27 @@
 import * as React from 'react';
 
 import ReviewsList from '../reviews-list/reviews-list';
-import { Map } from '../map/map';
-import { OffersList } from '../offers-list/offers-list';
+import {Map} from '../map/map';
+import {OffersList} from '../offers-list/offers-list';
 
-import { reviews } from '../../mocks/reviews';
-import { Offer } from "../../types/offer.types";
-import { LatLngTuple } from "leaflet";
+import {reviews} from '../../mocks/reviews';
+import {Offer} from "../../types/offer.types";
+import {LatLngTuple} from "leaflet";
 
 type DetailedOfferProps = {
   offer: Offer;
   offers: Offer[];
 };
 
-const DetailedOffer: React.FC<DetailedOfferProps> = ({ offer, offers }) => {
+const DetailedOffer: React.FC<DetailedOfferProps> = ({offer, offers}) => {
 
   const generateRandomInteger = (min, max) => {
     return Math.floor(min + Math.random() * (max + 1 - min));
   };
 
   const filteredCoordinates: LatLngTuple[] = offers
-    .filter(({ location }) => JSON.stringify([location.latitude, location.longitude]) !== JSON.stringify([offer.location.latitude, offer.location.longitude]))
-    .map(({ location }) => [location.latitude, location.longitude]);
+    .filter(({location}) => JSON.stringify([location.latitude, location.longitude]) !== JSON.stringify([offer.location.latitude, offer.location.longitude]))
+    .map(({location}) => [location.latitude, location.longitude]);
 
 
   const {
@@ -40,7 +40,7 @@ const DetailedOffer: React.FC<DetailedOfferProps> = ({ offer, offers }) => {
 
   return (
     <>
-      <div style={{ display: `none` }}>
+      <div style={{display: `none`}}>
         <svg xmlns="http://www.w3.org/2000/svg">
           <symbol id="icon-arrow-select" viewBox="0 0 7 4">
             <path fillRule="evenodd" clipRule="evenodd" d="M0 0l3.5 2.813L7 0v1.084L3.5 4 0 1.084V0z" />
@@ -51,7 +51,7 @@ const DetailedOffer: React.FC<DetailedOfferProps> = ({ offer, offers }) => {
           </symbol>
           <symbol id="icon-star" viewBox="0 0 13 12">
             <path fillRule="evenodd" clipRule="evenodd"
-                  d="M6.5 9.644L10.517 12 9.451 7.56 13 4.573l-4.674-.386L6.5 0 4.673 4.187 0 4.573 3.549 7.56 2.483 12 6.5 9.644z" />
+              d="M6.5 9.644L10.517 12 9.451 7.56 13 4.573l-4.674-.386L6.5 0 4.673 4.187 0 4.573 3.549 7.56 2.483 12 6.5 9.644z" />
           </symbol>
         </svg>
       </div>
@@ -109,7 +109,7 @@ const DetailedOffer: React.FC<DetailedOfferProps> = ({ offer, offers }) => {
                 </div>
                 <div className="property__rating rating">
                   <div className="property__stars rating__stars">
-                    <span style={{ width: `${rating}%` }} />
+                    <span style={{width: `${rating}%`}} />
                     <span className="visually-hidden">Rating</span>
                   </div>
                   <span className="property__rating-value rating__value">{rating}</span>
@@ -143,8 +143,8 @@ const DetailedOffer: React.FC<DetailedOfferProps> = ({ offer, offers }) => {
                     <div
                       className={`property__avatar-wrapper ${host.is_pro ? `property__avatar-wrapper--pro` : ``} user__avatar-wrapper`}>
                       <img className="property__avatar user__avatar" src={host.avatar_url} width="74"
-                           height="74"
-                           alt="Host avatar" />
+                        height="74"
+                        alt="Host avatar" />
                     </div>
                     <span className="property__user-name">
                       {host.name}
@@ -162,7 +162,7 @@ const DetailedOffer: React.FC<DetailedOfferProps> = ({ offer, offers }) => {
                     <label className="reviews__label form__label" htmlFor="review">Your review</label>
                     <div className="reviews__rating-form form__rating">
                       <input className="form__rating-input visually-hidden" name="rating" value="5" id="5-stars"
-                             type="radio" />
+                        type="radio" />
                       <label htmlFor="5-stars" className="reviews__rating-label form__rating-label" title="perfect">
                         <svg className="form__star-image" width="37" height="33">
                           <use xlinkHref="#icon-star" />
@@ -170,7 +170,7 @@ const DetailedOffer: React.FC<DetailedOfferProps> = ({ offer, offers }) => {
                       </label>
 
                       <input className="form__rating-input visually-hidden" name="rating" value="4" id="4-stars"
-                             type="radio" />
+                        type="radio" />
                       <label htmlFor="4-stars" className="reviews__rating-label form__rating-label" title="good">
                         <svg className="form__star-image" width="37" height="33">
                           <use xlinkHref="#icon-star" />
@@ -178,7 +178,7 @@ const DetailedOffer: React.FC<DetailedOfferProps> = ({ offer, offers }) => {
                       </label>
 
                       <input className="form__rating-input visually-hidden" name="rating" value="3" id="3-stars"
-                             type="radio" />
+                        type="radio" />
                       <label htmlFor="3-stars" className="reviews__rating-label form__rating-label" title="not bad">
                         <svg className="form__star-image" width="37" height="33">
                           <use xlinkHref="#icon-star" />
@@ -186,7 +186,7 @@ const DetailedOffer: React.FC<DetailedOfferProps> = ({ offer, offers }) => {
                       </label>
 
                       <input className="form__rating-input visually-hidden" name="rating" value="2" id="2-stars"
-                             type="radio" />
+                        type="radio" />
                       <label htmlFor="2-stars" className="reviews__rating-label form__rating-label" title="badly">
                         <svg className="form__star-image" width="37" height="33">
                           <use xlinkHref="#icon-star" />
@@ -194,16 +194,16 @@ const DetailedOffer: React.FC<DetailedOfferProps> = ({ offer, offers }) => {
                       </label>
 
                       <input className="form__rating-input visually-hidden" name="rating" value="1" id="1-star"
-                             type="radio" />
+                        type="radio" />
                       <label htmlFor="1-star" className="reviews__rating-label form__rating-label"
-                             title="terribly">
+                        title="terribly">
                         <svg className="form__star-image" width="37" height="33">
                           <use xlinkHref="#icon-star" />
                         </svg>
                       </label>
                     </div>
                     <textarea className="reviews__textarea form__textarea" id="review" name="review"
-                              placeholder="Tell how was your stay, what you like and what can be improved" />
+                      placeholder="Tell how was your stay, what you like and what can be improved" />
                     <div className="reviews__button-wrapper">
                       <p className="reviews__help">
                         To submit review please make sure to set <span className="reviews__star">rating</span> and
@@ -219,7 +219,7 @@ const DetailedOffer: React.FC<DetailedOfferProps> = ({ offer, offers }) => {
             </div>
             <section className="property__map map">
               <Map
-                city={[52.38333, 4.9]}
+                city={offer.city}
                 coordinates={filteredCoordinates}
                 zoom={12}
                 activeCard={[0, 0]}

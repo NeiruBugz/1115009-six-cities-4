@@ -6,25 +6,25 @@ import {
   marker,
   Map as LeafletMap,
   Icon,
-  Marker,
   LatLngTuple,
   LatLngExpression
 } from 'leaflet';
 import {connect} from 'react-redux';
+import {City} from "../../types/cities.types";
 
 type MapProps = {
   coordinates: LatLngTuple[] | number[][];
   activeCard: number[];
-  city: LatLngTuple | LatLngExpression;
+  city: City;
   zoom: number;
 };
 
-class Map extends React.PureComponent<MapProps> {
+class Map extends React.Component<MapProps> {
   mapRef: React.RefObject<HTMLDivElement>;
   map: LeafletMap;
   _icon: Icon;
   _activeIcon: Icon;
-  _markers: Marker[];
+  _markers: any[];
 
   constructor(props) {
     super(props);
@@ -44,12 +44,11 @@ class Map extends React.PureComponent<MapProps> {
   _createMarkers() {
     const {coordinates, activeCard} = this.props;
 
-    coordinates.forEach((coords) => {
+    coordinates.forEach((coords: LatLngExpression) => {
       const mrk = marker(coords, {
         icon: JSON.stringify(coords) === JSON.stringify(activeCard) ? this._activeIcon : this._icon
       });
       mrk.addTo(this.map);
-      // @ts-ignore
       this._markers.push(marker);
     });
   }
@@ -65,13 +64,15 @@ class Map extends React.PureComponent<MapProps> {
 
     const {city, zoom} = this.props;
 
+    const {location} = city;
+
     this.map = map(this.mapRef.current, {
       zoom,
-      center: city,
+      center: [location.latitude, location.longitude],
       zoomControl: false,
     });
 
-    this.map.setView(city, zoom);
+    this.map.setView([location.latitude, location.longitude], zoom);
 
     tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
       attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
@@ -85,7 +86,17 @@ class Map extends React.PureComponent<MapProps> {
     this._createMarkers();
   }
 
+  shouldComponentUpdate(nextProps: Readonly<MapProps>): boolean {
+    return this.props.city.name !== nextProps.city.name;
+  }
+
   render() {
+    if (this.map) {
+      const {city, zoom} = this.props;
+      const {location} = city;
+      
+      this.map.setView([location.latitude, location.longitude], zoom);
+    }
     return <div ref={this.mapRef} style={{height: `100%`}} />;
   }
 }

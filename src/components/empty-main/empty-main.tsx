@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-const EmptyMain = ({ city }: { city: string }) => {
+const EmptyMain = ({city}: { city: string }) => {
   return (
     <div className="cities">
       <div className="cities__places-container cities__places-container--empty container">

@@ -8,7 +8,7 @@ type ReviewProps = {
   rating: number;
 };
 
-const Review:React.FC<ReviewProps> = ({userAvatar, userName, comment, date, rating}) => {
+const Review: React.FC<ReviewProps> = ({userAvatar, userName, comment, date, rating}) => {
   return (
     <li className="reviews__item">
       <div className="reviews__user user">

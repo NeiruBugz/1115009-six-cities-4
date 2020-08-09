@@ -1,19 +1,20 @@
-import { offers as mockOffers } from '../../mocks/offers';
-import { sortOffers } from '../../shared/utils/functions';
-import { OfferState } from "../../types/offer.state.types";
+import {sortOffers} from '../../shared/utils/functions';
+import {OfferState} from "../../types/offer.state.types";
+import {Offer} from "../../types/offer.types";
 
 const initialState: OfferState = {
   city:
-    { location: { latitude: 52.38333, longitude: 4.9 }, name: `Amsterdam` },
+    {location: {latitude: 52.38333, longitude: 4.9}, name: `Amsterdam`},
   cities: [
-    { location: { latitude: 48.864716, longitude: 2.349014 }, name: `Paris` },
-    { location: { latitude: 50.935173, longitude: 6.953101 }, name: `Cologne` },
-    { location: { latitude: 50.8505, longitude: 4.3488 }, name: `Brussels` },
-    { location: { latitude: 52.38333, longitude: 4.9 }, name: `Amsterdam` },
-    { location: { latitude: 53.551086, longitude: 9.993682 }, name: `Hamburg` },
-    { location: { latitude: 51.2217, longitude: 6.7762 }, name: `Dusseldorf` },
+    {location: {latitude: 48.864716, longitude: 2.349014}, name: `Paris`},
+    {location: {latitude: 50.935173, longitude: 6.953101}, name: `Cologne`},
+    {location: {latitude: 50.8505, longitude: 4.3488}, name: `Brussels`},
+    {location: {latitude: 52.38333, longitude: 4.9}, name: `Amsterdam`},
+    {location: {latitude: 53.551086, longitude: 9.993682}, name: `Hamburg`},
+    {location: {latitude: 51.2217, longitude: 6.7762}, name: `Dusseldorf`},
   ],
-  offers: mockOffers.filter((offer) => offer.city.name === `Amsterdam`),
+  offers: [],
+  serverOffers: [],
   sort: `Popular`,
   activeCard: {
     latitude: 0,
@@ -26,6 +27,7 @@ export const ActionTypes = {
   SET_OFFERS: `SET_OFFERS`,
   SET_SORT_TYPE: `SET_SORT_TYPE`,
   SET_ACTIVE_CARD: `SET_ACTIVE_CARD`,
+  SET_SERVER_OFFERS: `SET_SERVER_OFFERS`,
 };
 
 export const setCity = (city) => ({
@@ -48,16 +50,23 @@ export const setActiveCard = (card) => ({
   payload: card,
 });
 
-export const reducer = (state = initialState, { type, payload }) => {
+export const setServerOffers = (serverOffers: Offer[]) => ({
+  type: ActionTypes.SET_SERVER_OFFERS,
+  payload: serverOffers,
+});
+
+export const reducer = (state = initialState, {type, payload}) => {
   switch (type) {
     case ActionTypes.SET_CITY:
-      return Object.assign({}, state, { city: payload });
+      return Object.assign({}, state, {city: payload});
     case ActionTypes.SET_SORT_TYPE:
-      return Object.assign({}, state, { sort: payload, offers: sortOffers(state.offers, payload) });
+      return Object.assign({}, state, {sort: payload, offers: sortOffers(state.offers, payload)});
     case ActionTypes.SET_OFFERS:
-      return Object.assign({}, state, { offers: payload });
+      return Object.assign({}, state, {offers: payload});
     case ActionTypes.SET_ACTIVE_CARD:
-      return Object.assign({}, state, { activeCard: payload });
+      return Object.assign({}, state, {activeCard: payload});
+    case ActionTypes.SET_SERVER_OFFERS:
+      return Object.assign({}, state, {serverOffers: payload});
     default:
       return state;
   }

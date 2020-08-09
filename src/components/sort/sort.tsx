@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
-import { setSortType } from '../../store/offers/reducer';
+import {setSortType} from '../../store/offers/reducer';
 
-import { SORT_TYPES } from '../../shared/utils/consts';
+import {SORT_TYPES} from '../../shared/utils/consts';
 
 interface SortProps {
   isListOpen: boolean;
@@ -12,7 +12,7 @@ interface SortProps {
   onSelectOpen: () => void;
 }
 
-const Sort: React.FC<SortProps> = ({ isListOpen, sortType, onChangeSortType, onSelectOpen }) => {
+const Sort: React.FC<SortProps> = ({isListOpen, sortType, onChangeSortType, onSelectOpen}) => {
 
   return (
     <form className="places__sorting" action="#" method="get">
@@ -55,5 +55,5 @@ const mapDispatchToProps = (dispatch) => ({
   onChangeSortType: (sortType) => dispatch(setSortType(sortType)),
 });
 
-export { Sort };
+export {Sort};
 export default connect(mapStateToProps, mapDispatchToProps)(Sort);
